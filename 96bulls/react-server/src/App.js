@@ -17,13 +17,13 @@ class App extends React.Component {
   render() {
     return (
       <FrontPage/>
-      // <CurrentClass/>
-      // <Question1/>
-      // <Question2/>
-      // <Page5/>
-      // <Page6/>
-      // <Leaderboard/>
-      // <Page8/>
+      // <CurrentClass/>   //max
+      // <Question1/>     //Hyun
+      // <Question2/>     //Hyun
+      // <Page5/>     //Abdul
+      // <Page6/>     //Abdul
+      // <Leaderboard/>     //Jesse
+      // <Page8/>     //Jesse
     );
   }
 }
