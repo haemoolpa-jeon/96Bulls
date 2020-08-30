@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './style/page8.css'
+import './style/leaderboard.css'
 
 import FrontPage from './pages/FrontPage.js';
 import CurrentClass from './pages/CurrentClass.js';
@@ -16,14 +18,14 @@ class App extends React.Component {
   
   render() {
     return (
-      <FrontPage/>
+      //<FrontPage/>
       // <CurrentClass/>   //max
       // <Question1/>     //Hyun
       // <Question2/>     //Hyun
       // <Page5/>     //Abdul
       // <Page6/>     //Abdul
-      // <Leaderboard/>     //Jesse
-      // <Page8/>     //Jesse
+      <Leaderboard/>     //Jesse
+      //<Page8/>     //Jesse
     );
   }
 }

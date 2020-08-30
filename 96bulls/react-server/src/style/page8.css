@@ -1,0 +1,24 @@
+
+
+.trophy {
+  width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.trophy img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.trophyContent {
+  text-align: center;
+  width: 500px;
+}
+
+.trophyContent p {
+  font-style: italic;
+}
