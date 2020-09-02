@@ -16,8 +16,8 @@ class App extends React.Component {
   
   render() {
     return (
-      <FrontPage/>
-      // <CurrentClass/>   //max
+      // <FrontPage/>
+      <CurrentClass/>   //max
       // <Question1/>     //Hyun
       // <Question2/>     //Hyun
       // <Page5/>     //Abdul

@@ -48,6 +48,75 @@
   margin: auto;
 }
 
+.current-class-page {
+  background-color: rgb(112, 112, 112);
+  height: 100%;
+}
+
+.info-cards {
+  background-color: #bbbbbb;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.page-header {
+  padding-top: 40px;
+  font-size: 30px;
+  font-weight: 500;
+  color: white;
+}
+
+.page-subheader {
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.user-levels-section {
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-row-gap: 20px;
+}
+
+.level-obj-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.level-circle {
+  background-color: white;
+  color: black;
+  height: 58px;
+  width: 58px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.current-class-footer {
+  padding: 80px 200px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.your-activities {
+  line-height: 2em;
+}
+
 .button {
   border-radius: 40px;
   background-color: #AC00CB;
