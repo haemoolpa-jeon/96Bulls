@@ -10,7 +10,7 @@ class CurrentClass extends React.Component {
             <div style={{display: 'inline-grid'}}>
                 <div className='level-obj-container'>
                     <div className='level-circle'>LVL: 5</div>
-                    <div style={{marginLeft: '-3px'}} ><img src='level_triangle.jpg'/></div>
+                    <div style={{marginLeft: '-3px'}} ><img src='level_triangle.jpg' alt="not loaded" /></div>
                     <div style={{textAlign: 'center'}}>{user}</div>
                 </div>
             </div>
@@ -47,7 +47,7 @@ class CurrentClass extends React.Component {
                     </div>
                     <div style={{color: 'white', textAlign: 'right'}}>
                         <div style={{fontSize: 25, marginBottom: 5}}>Reactions</div>
-                        <img src="reactions.png"/>
+                        <img src="reactions.png" alt="not loaded" />
                     </div>
                 </div>
             </div>

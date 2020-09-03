@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import './style/page8.css'
 import './style/leaderboard.css'
+import './style/page5.css'
 
 import FrontPage from './pages/FrontPage.js';
 import CurrentClass from './pages/CurrentClass.js';
@@ -25,7 +26,7 @@ class App extends React.Component {
           <Route exact path="/currentClass" render={() => <CurrentClass />} />
           <Route exact path="/question1" render={() => <Question1 />} />
           <Route exact path="/question2" render={() => <Question2 />} />
-          <Route exact path="/page5" render={() => <Page5 />} />
+          <Route exact path="/page5" render={() => <Page5 name="Christopher Walken" degree="Bachelor of Copy Paste" />} />
           <Route exact path="/page6" render={() => <Page6 />} />
           <Route exact path="/leaderboard" render={() => <Leaderboard />} />
           <Route exact path="/page8" render={() => <Page8 />} />
