@@ -50,3 +50,5 @@ const FrontPage = (props) => {
 }
 
 export default FrontPage;
+
+//Test file
