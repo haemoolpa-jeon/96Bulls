@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import './style/page8.css'
 import './style/leaderboard.css'
@@ -13,19 +12,25 @@ import Page6 from './pages/Page6.js';
 import Leaderboard from './pages/Leaderboard.js';
 import Page8 from './pages/Page8.js';
 
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
+
 
 class App extends React.Component {
   
   render() {
     return (
-      //<FrontPage/>
-      // <CurrentClass/>   //max
-      // <Question1/>     //Hyun
-      // <Question2/>     //Hyun
-      // <Page5/>     //Abdul
-      // <Page6/>     //Abdul
-      <Leaderboard/>     //Jesse
-      //<Page8/>     //Jesse
+      <Router>
+        <Switch>
+          <Route exact path="/" render={() => <FrontPage />} />
+          <Route exact path="/currentClass" render={() => <CurrentClass />} />
+          <Route exact path="/question1" render={() => <Question1 />} />
+          <Route exact path="/question2" render={() => <Question2 />} />
+          <Route exact path="/page5" render={() => <Page5 />} />
+          <Route exact path="/page6" render={() => <Page6 />} />
+          <Route exact path="/leaderboard" render={() => <Leaderboard />} />
+          <Route exact path="/page8" render={() => <Page8 />} />
+        </Switch>
+      </Router>
     );
   }
 }
