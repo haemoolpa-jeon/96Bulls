@@ -1,5 +1,6 @@
 import React from 'react';
 import BoardEntry from './BoardEntry'
+import { NavLink, useHistory } from "react-router-dom"
 
 import avatar from '../avatar.png'
 import trophy from '../trophy.jpg'
@@ -45,6 +46,12 @@ const profiles = [
 
 const Leaderboard = () => {
 
+  const history = useHistory();
+
+    const goBack = () => {
+        history.goBack();
+    }
+
   const renderProfiles = () => {
     return (
       profiles.map((profile, index) => (
@@ -62,13 +69,16 @@ const Leaderboard = () => {
   }
 
   return(
-      <div id="leaderboard">
-        <div id='headings'>
-          <h1>Position</h1>
-          <h1>User</h1>
+      <React.Fragment>
+        <div className='back-button' onClick={goBack}>⟵   Back</div>
+        <div id="leaderboard">
+          <div id='headings'>
+            <h1>Position</h1>
+            <h1>User</h1>
+          </div>
+          {renderProfiles()}
         </div>
-        {renderProfiles()}
-      </div>
+      </React.Fragment>
   );
 
 }

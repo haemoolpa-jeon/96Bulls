@@ -40,8 +40,8 @@ const FrontPage = (props) => {
             </div>
             
             <div className='flex-bottom-right' style={{textAlign: 'right', fontSize: 14, width: '100%', minHeight: 100, paddingBottom: 20}}>
-                <div onClick={relocateToClass} style={{display: 'flex', cursor: 'pointer'}}>Current class: studio one <div style={{fontSize: 30}}>→</div></div>
-                <div onClick={relocateToQuestions} style={{cursor: 'pointer'}}>3/15 Pre-class quiz <span style={{fontSize: 30}}>→</span></div>  
+                <div onClick={relocateToClass} style={{display: 'flex', cursor: 'pointer', paddingRight: 10}}><p style={{margin: '11px 5px 0 0'}}>Current class: studio one</p> <div style={{fontSize: 30}}>→</div></div>
+                <div onClick={relocateToQuestions} style={{display: 'flex', cursor: 'pointer', paddingRight: 10}}><p style={{margin: '11px 5px 0 0'}}>3/15 Pre-class quiz</p> <div style={{fontSize: 30}}>→</div></div>  
             </div>  
             </div>
         </div>

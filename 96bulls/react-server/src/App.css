@@ -3,8 +3,73 @@
   background-color: #9919DD;
   width:100%;
   height: 100%;
+  margin-top: 5%;
   display: flex;
   align-items: center;
+}
+
+#edit-profile-page {
+  height: 100%;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.shape-container {
+  border: 2px solid black;
+  border-radius: 20px;
+  height: 300px;
+  margin-top: 30px;
+  padding: 50px;
+  width: 60%;
+}
+
+.single-shape-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 25px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: blue !important;
+}
+
+.shape-caption {
+  font-style: italic;
+  margin-top: 5px;
+}
+
+#circle {
+  height: 50px;
+  width: 50px;
+  background-color: green;
+  border-radius: 50%;
+  display: block;
+}
+
+#triangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid green;
+  display: block;
+}
+
+#square {
+  width: 50px;
+  height: 50px;
+  background: green;
+}
+
+#rectangle {
+  height: 50px;
+  width: 100px;
+  background-color: green;
+  display: block;
 }
 
 .muted {
@@ -51,6 +116,20 @@
 .current-class-page {
   background-color: rgb(112, 112, 112);
   height: 100%;
+}
+
+.back-button {
+  padding: 20px;
+}
+
+.back-button a {
+  margin-top: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.back-button:hover {
+  cursor: pointer;
 }
 
 .info-cards {
