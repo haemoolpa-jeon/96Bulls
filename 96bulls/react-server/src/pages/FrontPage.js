@@ -14,7 +14,7 @@ const FrontPage = (props) => {
 
     const relocateToQuestions = () => {
         console.log('relocating to questions');
-        history.push('/question1');
+        history.push('/QuizPage');
     }
 
     const relocateToClass = () => {

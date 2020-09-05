@@ -221,3 +221,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+.Quiz-header {
+  background-color: #222;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+.Quiz-intro {
+  font-size: large;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
