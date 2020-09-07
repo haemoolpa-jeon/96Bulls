@@ -1,7 +1,5 @@
 import React from 'react';
 import '../App.css';
-import { NavLink, useHistory } from "react-router-dom"
-
 
 class CurrentClass extends React.Component {
 

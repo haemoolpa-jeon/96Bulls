@@ -119,7 +119,14 @@
 }
 
 .back-button {
-  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  width: 90px;
 }
 
 .back-button a {
@@ -234,6 +241,22 @@
   font-size: large;
 }
 
+.answerOptions {
+  text-align: center;
+  list-style: none;
+}
+
+.answerOption {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+.answerOption label {
+  margin-left: 15px;
+  margin-top: -5px;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -241,4 +264,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.home-button {
+  border: none;
+  margin-top: 10px;
 }

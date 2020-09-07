@@ -1,45 +1,39 @@
 import React from 'react';
 import BoardEntry from './BoardEntry'
-import { NavLink, useHistory } from "react-router-dom"
-
-import avatar from '../avatar.png'
-import trophy from '../trophy.jpg'
+import { useHistory } from "react-router-dom"
 
 const profiles = [
   {
-      position: 301,
+      avatarURL: 'man.png',
+      position: 1,
       name: "Christopher Walken",
       degree: "Bachelor of copy paste",
-      level: 1,
-      trophyList: [trophy, trophy]
+      level: 7,
+      trophyList: ['gold.png', 'ribbon.png', 'medal.png']
   },
   {
-      position: 302,
-      name: "Christopher Walken",
+      avatarURL: 'businessman.png',
+      position: 2,
+      name: "Kazuko Hallenbeck",
       degree: "Bachelor of copy paste",
-      level: 1,
-      trophyList: [trophy, trophy]
+      level: 5,
+      trophyList: ['gold.png', 'ribbon.png', 'medal.png']
   },
   {
-      position: 303,
-      name: "Christopher Walken",
+      avatarURL: 'soccer-player.png',
+      position: 3,
+      name: "Leonor Linsey",
       degree: "Bachelor of copy paste",
-      level: 1,
-      trophyList: [trophy, trophy]
+      level: 2,
+      trophyList: ['gold.png', 'ribbon.png', 'medal.png']
   },
   {
-      position: 304,
-      name: "Christopher Walken",
+      avatarURL: 'girl.png',
+      position: 4,
+      name: "Tracey Vanhorn",
       degree: "Bachelor of copy paste",
-      level: 1,
-      trophyList: [trophy, trophy]
-  },
-  {
-      position: 305,
-      name: "Christopher Walken",
-      degree: "Bachelor of copy paste",
-      level: 1,
-      trophyList: [trophy, trophy]
+      level: 3,
+      trophyList: ['gold.png', 'ribbon.png', 'medal.png']
   }
 ]
 
@@ -58,10 +52,10 @@ const Leaderboard = () => {
         <BoardEntry 
             key={index}
             position={profile.position} 
-            avatarURL={avatar} 
+            avatarURL={profile.avatarURL} 
             name={profile.name} 
             degree={profile.degree} 
-            level={profile.level} 
+            level={`Level: ${profile.level}`} 
             trophyList={profile.trophyList}  
         />)
       )

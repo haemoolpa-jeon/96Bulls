@@ -8,12 +8,12 @@ const Profile = ({avatarURL, name, degree}) => {
     const history = useHistory();
 
     const goBack = () => {
-        history.goBack();
+        history.push('/');
     }
 
     return (
         <div id='page5'>
-            <div className='back-button' onClick={goBack}>⟵   Back</div>
+            <div className='back-button' onClick={goBack}>⟵   Home</div>
             <div id="profile-main">
                 <img src={"level_triangle.jpg"} alt="not loaded"></img>
                 <h2>{name}</h2>

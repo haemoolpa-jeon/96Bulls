@@ -11,6 +11,7 @@ import EditProfile from './pages/EditProfile.js';
 import Leaderboard from './pages/Leaderboard.js';
 import Page8 from './pages/Page8.js';
 import QuizPage from './pages/QuizPage.js';
+import HomePage from './pages/HomePage.js';
 
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 
@@ -21,7 +22,8 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" render={() => <FrontPage />} />
+          <Route exact path="/" render={() => <HomePage />} />
+          <Route exact path="/home" render={() => <FrontPage />} />
           <Route exact path="/currentClass" render={() => <CurrentClass />} />
           <Route exact path="/profile" render={() => <Profile name="Christopher Walken" degree="Bachelor of Copy Paste" />} />
           <Route exact path="/editprofile" render={() => <EditProfile />} />

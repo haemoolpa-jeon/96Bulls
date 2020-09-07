@@ -24,6 +24,8 @@ const FrontPage = (props) => {
 
 
     return (
+        <div>
+        <div className='back-button' onClick={() => {history.goBack()}}>⟵   Home</div>
         <div className="home-page">
             <div className="home-card">
             <div className='flex-center' style={{backgroundColor: '#BF40FF', width: '100%', height: 60, color: 'white'}}>
@@ -44,6 +46,7 @@ const FrontPage = (props) => {
                 <div onClick={relocateToQuestions} style={{display: 'flex', cursor: 'pointer', paddingRight: 10}}><p style={{margin: '11px 5px 0 0'}}>3/15 Pre-class quiz</p> <div style={{fontSize: 30}}>→</div></div>  
             </div>  
             </div>
+        </div>
         </div>
     );
     

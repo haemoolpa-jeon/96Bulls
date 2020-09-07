@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
+import { useHistory } from 'react-router-dom'
 
 function Result(props) {
+
+  const history = useHistory();
+
   return (
     <CSSTransition
       className="container result"
@@ -14,7 +18,16 @@ function Result(props) {
       transitionAppearTimeout={500}
     >
       <div>
-        You prefer <strong>{props.quizResult}</strong>!
+      {
+        props.quizResult === 1
+        ? <div>
+            You got <strong>{props.quizResult}</strong> question correct
+          </div>
+        : <div>
+            You got <strong>{props.quizResult}</strong> questions correct
+          </div>
+      }
+      <button className="button home-button" onClick={() => {history.push('/')}}>Home</button>
       </div>
     </CSSTransition>
   );
