@@ -89,6 +89,10 @@ class QuizPage extends React.Component {
     const answersCountKeys = Object.keys(answersCount);
     const answersCountValues = answersCountKeys.map(key => answersCount[key]);
     const maxAnswerCount = Math.max.apply(null, answersCountValues);
+    console.log('answersCount:', answersCount);
+    console.log('answersCountKeys:', answersCountKeys);
+    console.log('answersCountValues:', answersCountValues);
+    console.log('maxAnswerCount:', maxAnswerCount);
 
     return answersCountKeys.filter(key => answersCount[key] === maxAnswerCount);
   }
@@ -99,6 +103,20 @@ class QuizPage extends React.Component {
     } else {
       this.setState({ result: 'Undetermined' });
     }
+    console.log('RESULT:', result);
+    // updating xp in database line goes here
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: 'Christopher Walken',
+        xpGained: result[0] * 100,
+        questionsAnswered: result[0],
+      })
+    };
+
+    console.log(requestOptions);
+    fetch('/profile/xp', requestOptions).catch(err => console.log(err));
   }
 
   renderQuiz() {
@@ -121,15 +139,15 @@ class QuizPage extends React.Component {
   render() {
     return (
       <div className="home-page">
-          <div className="home-card">
-            <div className='flex-center' style={{backgroundColor: '#BF40FF', width: '100%', height: 60, color: 'white'}}>
-                <i>Classes</i>
-            </div>
-        <div className="Quiz-header">
-          <h2>Quiz</h2>
+        <div className="home-card">
+          <div className='flex-center' style={{ backgroundColor: '#BF40FF', width: '100%', height: 60, color: 'white' }}>
+            <i>Classes</i>
+          </div>
+          <div className="Quiz-header">
+            <h2>Quiz</h2>
+          </div>
+          {this.state.result ? this.renderResult() : this.renderQuiz()}
         </div>
-        {this.state.result ? this.renderResult() : this.renderQuiz()}
-      </div>
       </div>
     );
   }
