@@ -12,7 +12,7 @@ const router = express.Router();
  */
 router.get('/all', async (req, res) => {
 
-  const profiles = await Profile.find().sort({ level : "desc", xp : "desc"});
+  const profiles = await Profile.find().sort({ level: "desc", xp: "desc" });
   res.json(profiles);
 
 })
@@ -35,7 +35,7 @@ router.get('/:name', async (req, res) => {
 
   const { name } = req.params;
 
-  const userProfile = await Profile.findOne({name});
+  const userProfile = await Profile.findOne({ name });
   res.json(userProfile)
 
 })
@@ -44,8 +44,8 @@ router.post('/updateimg', async (req, res) => {
 
   const { imgURL } = req.body;
 
-  let userProfile = await Profile.findOne({name: "User2"});
-  userProfile = await userProfile.update({avatarURL: imgURL});
+  let userProfile = await Profile.findOne({ name: "User2" });
+  userProfile = await userProfile.update({ avatarURL: imgURL });
 
   res.sendStatus(200);
 
@@ -55,28 +55,28 @@ router.post('/updateimg', async (req, res) => {
  * Updates the xp of a user after completing a quiz, checks if 
  * they have leveled up or if they have earnt any achievements
  */
-router.post('/',  async (req, res) => {
+router.post('/xp', async (req, res) => {
   const { username, xpGained, questionsAnswered } = req.body;
-  
-  const userProfile = await Profile.findOne({name: username});
-  
+
+  const userProfile = await Profile.findOne({ name: username });
+
   //Add the xp and check for level up
   const newXP = userProfile.xp + xpGained;
   if (newXp > 1000) {
     newXp -= 1000;
     const newProfile = userProfile.update({
-      xp: newXp, 
+      xp: newXp,
       level: userProfile.level + 1,
-      questionsAnswered: userProfile.questionsAnswered + questionsAnswered  
+      questionsAnswered: userProfile.questionsAnswered + questionsAnswered
     });
-    res.json({newProfile, levelUp: true});
+    res.json({ newProfile, levelUp: true });
     return;
   } else {
     const newProfile = userProfile.update({
       xp: newXp,
-      questionsAnswered: userProfile.questionsAnswered + questionsAnswered 
+      questionsAnswered: userProfile.questionsAnswered + questionsAnswered
     });
-    res.json({newProfile, levelUp: false});
+    res.json({ newProfile, levelUp: false });
     return;
   }
 
