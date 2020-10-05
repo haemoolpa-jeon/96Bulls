@@ -9,6 +9,7 @@ app.use(express.json());
 
 const profileRoutes = require('./routes/profile');
 const Profile = require('./DB/Profile');
+const Achievement = require('./DB/Achievement');
 app.use('/profile', profileRoutes);
 
 
@@ -28,4 +29,16 @@ const test = async () => {
   await userProfile4.save();
 }
 
+const fillAchievements = async () => {
+  let achievement1 = new Achievement({name: "Quick Quizzer", description: "Answered 10 quiz questions correctly in under 20 seconds", imageURL: "medal.png"});
+  let achievement2 = new Achievement({name: "Question Veteran", description: "Congratulations, you have answered 50 questions throughout your time here", imageURL: "gold.png"});
+  let achievement3 = new Achievement({name: "Level Up", description: "You've achieved level 2! You're no rookie anymore.", imageURL: "ribbon.png"});
+  await achievement1.save();
+  await achievement2.save();
+  await achievement3.save();
+}
+
+// fillAchievements();
 // test();
+
+

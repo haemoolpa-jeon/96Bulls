@@ -2,6 +2,7 @@ const e = require('express');
 const express = require('express');
 const mongoose = require('mongoose');
 const Profile = require('../DB/Profile');
+const Achievement = require('../DB/Achievement')
 const router = express.Router();
 
 
@@ -13,6 +14,16 @@ router.get('/all', async (req, res) => {
 
   const profiles = await Profile.find().sort({ level : "desc", xp : "desc"});
   res.json(profiles);
+
+})
+
+/**
+ * Gets the achievements for the profile, atm just returns them all
+ */
+router.get('/achievements', async (req, res) => {
+
+  const achievements = await Achievement.find();
+  res.json(achievements);
 
 })
 

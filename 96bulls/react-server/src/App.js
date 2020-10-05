@@ -8,13 +8,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import FrontPage from './pages/FrontPage.js';
 import CurrentClass from './pages/CurrentClass.js';
 import Profile from './pages/Profile.js';
-import EditProfile from './pages/EditProfile.js';
 import Leaderboard from './pages/Leaderboard.js';
 import Page8 from './pages/Page8.js';
 import QuizPage from './pages/QuizPage.js';
 import HomePage from './pages/HomePage.js';
 
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
+import EditProfile from './pages/Canvas.js';
 
 
 class App extends React.Component {
