@@ -23,6 +23,9 @@
 #profile-main img {
   margin-top: 20px;
   object-fit: contain;
+  width: 200px;
+  height: 200px;
+  margin: auto;
 }
 
 .navButton {
