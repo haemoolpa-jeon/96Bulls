@@ -40,6 +40,16 @@ router.get('/:name', async (req, res) => {
 
 })
 
+router.post('/updateimg', async (req, res) => {
+
+  const { imgURL } = req.body;
+
+  let userProfile = await Profile.findOne({name: "User2"});
+  userProfile = await userProfile.update({avatarURL: imgURL});
+
+  res.sendStatus(200);
+
+})
 
 /**
  * Updates the xp of a user after completing a quiz, checks if 

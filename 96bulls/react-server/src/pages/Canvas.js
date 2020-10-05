@@ -132,6 +132,17 @@ const EditProfile = () => {
     image.id = "pic";
     image.src = dataURL;
     document.getElementById('canvasImg').appendChild(image);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({imgURL: dataURL})
+    };
+    console.log(requestOptions);
+    
+    fetch('/profile/updateimg', requestOptions)
+      .catch(err => console.log(err))
+
   }
 
   return (
