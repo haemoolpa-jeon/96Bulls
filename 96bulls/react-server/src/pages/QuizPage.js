@@ -109,7 +109,7 @@ class QuizPage extends React.Component {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: 'Christopher Walken',
+        username: 'User1',
         xpGained: result[0] * 100,
         questionsAnswered: result[0],
       })

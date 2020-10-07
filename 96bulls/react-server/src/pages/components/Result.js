@@ -18,16 +18,16 @@ function Result(props) {
       transitionAppearTimeout={500}
     >
       <div>
-      {
-        props.quizResult === 1
-        ? <div>
-            You got <strong>{props.quizResult}</strong> question correct
+        {
+          props.quizResult === 1
+            ? <div>
+              You got <strong>{props.quizResult}</strong> question correct
+            </div>
+            : <div>
+              You got <strong>{props.quizResult}</strong> questions correct
           </div>
-        : <div>
-            You got <strong>{props.quizResult}</strong> questions correct
-          </div>
-      }
-      <button className="button home-button" onClick={() => {history.push('/')}}>Home</button>
+        }
+        <button className="button home-button" onClick={() => { history.push('/') }}>Home</button>
       </div>
     </CSSTransition>
   );

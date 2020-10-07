@@ -12,13 +12,14 @@ import Leaderboard from './pages/Leaderboard.js';
 import Page8 from './pages/Page8.js';
 import QuizPage from './pages/QuizPage.js';
 import HomePage from './pages/HomePage.js';
+import CreateQuiz from './pages/CreateQuiz.js';
 
-import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import EditProfile from './pages/Canvas.js';
 
 
 class App extends React.Component {
-  
+
   render() {
     return (
       <Router>
@@ -31,6 +32,7 @@ class App extends React.Component {
           <Route exact path="/leaderboard" render={() => <Leaderboard />} />
           <Route exact path="/page8" render={() => <Page8 />} />
           <Route exact path="/QuizPage" render={() => <QuizPage />} />
+          <Route exact path="/CreateQuiz" render={() => <CreateQuiz />} />
         </Switch>
       </Router>
     );

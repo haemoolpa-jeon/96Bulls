@@ -18,6 +18,10 @@ const FrontPage = (props) => {
         history.push('/QuizPage');
     }
 
+    const relocateToCreateQuiz = () => {
+        history.push('/CreateQuiz');
+    }
+
     const relocateToClass = () => {
         console.log("Relocating to class");
         history.push('/currentClass');
@@ -26,31 +30,33 @@ const FrontPage = (props) => {
 
     return (
         <div>
-        <div className='back-button' onClick={() => {history.goBack()}}>⟵   Home</div>
-        <div className="home-page">
-            <div className="home-card">
-            <div className='flex-center' style={{backgroundColor: '#BF40FF', width: '100%', height: 60, color: 'white'}}>
-                <i>Classes</i>
+            <div className='back-button' onClick={() => { history.goBack() }}>⟵   Home</div>
+            <div className="home-page">
+                <div className="home-card">
+                    <div className='flex-center' style={{ backgroundColor: '#BF40FF', width: '100%', height: 60, color: 'white' }}>
+                        <i>Classes</i>
+                    </div>
+                    <div>
+                        <p className='muted' style={{ fontSize: 14, marginBottom: 30 }}>DECO3801 - Design computing studio 3</p>
+                    </div>
+                    <div className="button" onClick={relocateToLeaderboard}>
+                        Course Leaderboard
+                    </div>
+                    <div style={{ fontWeight: 600 }}>
+                        You - rank 1/500
+                    </div>
+                    <div className='flex-bottom-right' style={{ textAlign: 'right', fontSize: 14, width: '100%', minHeight: 100, paddingBottom: 20 }}>
+                        <div onClick={relocateToClass} style={{ display: 'flex', cursor: 'pointer', paddingRight: 10 }}><p style={{ margin: '11px 5px 0 0' }}>Current class: studio one</p> <div style={{ fontSize: 30 }}>→</div></div>
+                        <div onClick={relocateToQuestions} style={{ display: 'flex', cursor: 'pointer', paddingRight: 10 }}><p style={{ margin: '11px 5px 0 0' }}>3/15 Pre-class quiz</p> <div style={{ fontSize: 30 }}>→</div></div>
+                    </div>
+                    <div className="button" onClick={relocateToCreateQuiz}>
+                        Create quiz
+                    </div>
+                </div>
             </div>
-            <div>
-                <p className='muted' style={{fontSize: 14, marginBottom: 30}}>DECO3801 - Design computing studio 3</p>
-            </div>
-            <div className="button" onClick={relocateToLeaderboard}>
-                Course Leaderboard
-            </div>
-            <div style={{fontWeight: 600}}>
-                You - rank 1/500
-            </div>
-            
-            <div className='flex-bottom-right' style={{textAlign: 'right', fontSize: 14, width: '100%', minHeight: 100, paddingBottom: 20}}>
-                <div onClick={relocateToClass} style={{display: 'flex', cursor: 'pointer', paddingRight: 10}}><p style={{margin: '11px 5px 0 0'}}>Current class: studio one</p> <div style={{fontSize: 30}}>→</div></div>
-                <div onClick={relocateToQuestions} style={{display: 'flex', cursor: 'pointer', paddingRight: 10}}><p style={{margin: '11px 5px 0 0'}}>3/15 Pre-class quiz</p> <div style={{fontSize: 30}}>→</div></div>  
-            </div>  
-            </div>
-        </div>
         </div>
     );
-    
+
 }
 
 export default FrontPage;
