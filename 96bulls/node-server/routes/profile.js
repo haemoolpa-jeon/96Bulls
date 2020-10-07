@@ -57,15 +57,17 @@ router.post('/updateimg', async (req, res) => {
  */
 router.post('/xp', async (req, res) => {
   console.log('REACHED XP ROUTE!!!!!!!!!!');
-  const { username, xpGained, questionsAnswered } = req.body;
+  let { username, xpGained, questionsAnswered } = req.body;
+  xpGained = parseInt(xpGained);
 
   const userProfile = await Profile.findOne({ name: username });
   console.log('user profile:', userProfile);
   //Add the xp and check for level up
   let newXP = userProfile.xp + xpGained;
+
   if (newXP > 1000) {
     newXP -= 1000;
-    const newProfile = userProfile.update({
+    const newProfile = await Profile.updateOne( {name: username}, {
       xp: newXP,
       level: userProfile.level + 1,
       questionsAnswered: userProfile.questionsAnswered + questionsAnswered
@@ -73,7 +75,7 @@ router.post('/xp', async (req, res) => {
     res.json({ newProfile, levelUp: true });
     return;
   } else {
-    const newProfile = userProfile.update({
+    const newProfile = await Profile.updateOne( {name: username}, {
       xp: newXP,
       questionsAnswered: userProfile.questionsAnswered + questionsAnswered
     });
