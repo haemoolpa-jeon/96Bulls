@@ -10,9 +10,10 @@ import CurrentClass from './pages/CurrentClass.js';
 import Profile from './pages/Profile.js';
 import Leaderboard from './pages/Leaderboard.js';
 import Page8 from './pages/Page8.js';
-import QuizPage from './pages/QuizPage.js';
+import QuizPage from './pages/QuizPageAlt.js';
 import HomePage from './pages/HomePage.js';
-import CreateQuiz from './pages/CreateQuiz.js';
+import CreateQuiz from './pages/CreateQuizAlt.js';
+import Quizzes from './pages/Quizzes.js';
 
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import EditProfile from './pages/Canvas.js';
@@ -31,8 +32,10 @@ class App extends React.Component {
           <Route exact path="/editprofile" render={() => <EditProfile />} />
           <Route exact path="/leaderboard" render={() => <Leaderboard />} />
           <Route exact path="/page8" render={() => <Page8 />} />
-          <Route exact path="/QuizPage" render={() => <QuizPage />} />
-          <Route exact path="/CreateQuiz" render={() => <CreateQuiz />} />
+          <Route exact path="/Quiz/:id" render={({match}) => <QuizPage match={match} />} />
+          <Route exact path="/CreateQuiz" render={() => 
+          <CreateQuiz />} />
+          <Route exact path="/quizzes" render={() => <Quizzes />} />
         </Switch>
       </Router>
     );

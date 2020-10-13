@@ -8,9 +8,11 @@ connectDB();
 app.use(express.json());
 
 const profileRoutes = require('./routes/profile');
+app.use('/profile', profileRoutes);
+const quizRoutes = require('./routes/quiz');
+app.use('/quiz', quizRoutes);
 const Profile = require('./DB/Profile');
 const Achievement = require('./DB/Achievement');
-app.use('/profile', profileRoutes);
 
 
 const port = 4000;

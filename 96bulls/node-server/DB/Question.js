@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const question = new mongoose.Schema({
 
   quizID: {
-    type:Number
+    type:String
   },
   question: {
     type:String
@@ -17,11 +17,8 @@ const question = new mongoose.Schema({
   option3: {
     type:String
   },
-  option4: {
-    type:String
-  },
   correct: {
-    type:Number
+    type:String
   }
 
 })

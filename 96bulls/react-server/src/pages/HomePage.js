@@ -17,8 +17,11 @@ const HomePage = (props) => {
               <div className="button"style={{width: '200px'}} onClick={() => {history.push('/home')}}>
                   Class
               </div>
-              <div className="button"style={{width: '200px'}} onClick={() => {history.push('/leaderboard')}}>
+              <div className="button" style={{width: '200px'}} onClick={() => {history.push('/leaderboard')}}>
                   Leaderboard
+              </div>
+              <div className="button" style={{width: '200px'}} onClick={() => history.push('/quizzes')}>
+                View Quizzes
               </div>
             </div>
         </div>

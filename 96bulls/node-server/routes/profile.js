@@ -56,12 +56,11 @@ router.post('/updateimg', async (req, res) => {
  * they have leveled up or if they have earnt any achievements
  */
 router.post('/xp', async (req, res) => {
-  console.log('REACHED XP ROUTE!!!!!!!!!!');
+  console.log(req.body);
   let { username, xpGained, questionsAnswered } = req.body;
   xpGained = parseInt(xpGained);
 
   const userProfile = await Profile.findOne({ name: username });
-  console.log('user profile:', userProfile);
   //Add the xp and check for level up
   let newXP = userProfile.xp + xpGained;
 
