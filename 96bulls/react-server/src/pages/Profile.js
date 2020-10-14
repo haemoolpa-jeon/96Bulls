@@ -26,7 +26,7 @@ const Profile = () => {
 
     return (
         <div id='page5'>
-            <div className='back-button' onClick={goBack}>⟵   Home</div>
+            <div className='back-button' onClick={goBack}>⟵   Back</div>
             <div id="profile-main">
                 <img src={profileInfo.avatarURL} alt="not loaded"></img>
                 <h2>{profileInfo.name}</h2>

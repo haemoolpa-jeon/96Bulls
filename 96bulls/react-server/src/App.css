@@ -126,7 +126,7 @@
   background-color: white;
   border: 1px solid black;
   border-radius: 15px;
-  width: 90px;
+  width: 100px;
 }
 
 .back-button a {
@@ -137,6 +137,8 @@
 
 .back-button:hover {
   cursor: pointer;
+  color: black;
+  text-decoration: none;
 }
 
 .info-cards {

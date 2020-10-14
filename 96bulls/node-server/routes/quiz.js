@@ -11,7 +11,16 @@ const router = express.Router();
  */
 router.get('/all', async (req, res) => {
   let quizzes = await Quiz.find({});
-  res.json(quizzes);
+  let quizFormatted = [];
+  for (let i = 0; i < quizzes.length; i++) {
+    const questions = await Question.find({quizID: quizzes[i].quizName});
+    quizFormatted.push({
+      quizName: quizzes[i].quizName,
+      quizCourse: quizzes[i].quizCourse,
+      numQuestions: questions.length
+    });
+  }
+  res.json(quizFormatted);
 })
 
 /**

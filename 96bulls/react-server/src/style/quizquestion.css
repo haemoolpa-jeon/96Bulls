@@ -1,0 +1,33 @@
+
+
+#question-page {
+  width: 50vw;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+  background-color: white;
+}
+
+#course {
+  font-weight: bold;
+}
+
+.question-label {
+  margin: 10px;
+  font-size: 20px;
+}
+
+#quiz-complete {
+  height: 230px;
+}
+
+#xp {
+  margin: 15px;
+  margin-bottom: 25px;
+}
+
+#correct-answers {
+  font-size: 20px;
+  padding: 10px;
+}

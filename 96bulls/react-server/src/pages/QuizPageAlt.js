@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-
+import { useHistory, NavLink } from "react-router-dom"
+import '../style/quizquestion.css';
 
 const QuizPage = ({match}) => {
 
@@ -9,6 +10,8 @@ const QuizPage = ({match}) => {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [correct, updateCorrect] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
+
+  const history = useHistory();
 
   useState(() => {
 
@@ -70,40 +73,61 @@ const QuizPage = ({match}) => {
     resetRadioButtons();
   }
 
-  return (
-    <div>
-      {
-        loaded
-        ?
-          <>
-            {
-              quizComplete
-              ?
-                <div>
-                  <h1>Quiz Complete</h1>
-                  <h2>You got {correct} out of {questions.length} correct.</h2>
-                </div>
-              :
-                <>
-                  <h1>{quiz.quizName}</h1>
-                  <h2>{quiz.quizCourse}</h2>
-                  <h3 ref={question}>{questions[questionNumber].question}</h3>
-                  <input ref={answer1} type="radio" onClick={nextQuestion}></input>
-                  <label>{questions[questionNumber].correct}</label><br />
-                  <input ref={answer2} type="radio" onClick={nextQuestion}></input>
-                  <label>{questions[questionNumber].option1}</label><br />
-                  <input ref={answer3} type="radio" onClick={nextQuestion}></input>
-                  <label>{questions[questionNumber].option2}</label><br />
-                  <input ref={answer4} type="radio" onClick={nextQuestion}></input>
-                  <label>{questions[questionNumber].option3}</label>
-                </>
+  const goBack = () => {
+    history.goBack();
+  }
 
-              }
-          </>
-        :
-          <h1>Loading</h1>
-      }
-    </div>
+  return (
+    <>
+      <div className='back-button' onClick={goBack}>⟵   Back</div>
+      <div id='question-page'>
+        {
+          loaded
+          ?
+            <>
+              {
+                quizComplete
+                ?
+                  <div id="quiz-complete">
+                    <h1 id="title">Quiz Complete</h1>
+                    <h3 id="correct-answers">You got {correct} out of {questions.length} correct.</h3>
+                    <h3 id='xp'>{correct * 100}XP Gained</h3>
+                    <NavLink className='button' to='/'>Home</NavLink>
+                    
+                  </div>
+                :
+                  <>
+                    <h1 id="title">{quiz.quizName}</h1>
+                    <p id="course">{quiz.quizCourse}</p>
+                    <h3 ref={question}>Question: {questions[questionNumber].question}</h3>
+
+
+                    <label className="question-label">{'a)'}</label>
+                    <input className="question-input" ref={answer1} type="radio" onClick={nextQuestion}></input>
+                    <label className="question-label">{questions[questionNumber].correct}</label><br />
+
+
+                    <label className="question-label">{'b)'}</label>
+                    <input className="question-input" ref={answer2} type="radio" onClick={nextQuestion}></input>
+                    <label className="question-label">{questions[questionNumber].option1}</label><br />
+                    
+                    <label className="question-label">{'c)'}</label>
+                    <input className="question-input" ref={answer3} type="radio" onClick={nextQuestion}></input>
+                    <label className="question-label">{questions[questionNumber].option2}</label><br />
+                    
+                    <label className="question-label">{'d)'}</label>
+                    <input className="question-input" ref={answer4} type="radio" onClick={nextQuestion}></input>
+                    <label className="question-label">{questions[questionNumber].option3}</label>
+
+                  </>
+
+                }
+            </>
+          :
+            <h1>Loading</h1>
+        }
+      </div>
+    </>
   )
 }
 

@@ -30,7 +30,7 @@ const FrontPage = (props) => {
 
     return (
         <div>
-            <div className='back-button' onClick={() => { history.goBack() }}>⟵   Home</div>
+            <div className='back-button' onClick={() => { history.goBack() }}>⟵   Back</div>
             <div className="home-page">
                 <div className="home-card">
                     <div className='flex-center' style={{ backgroundColor: '#BF40FF', width: '100%', height: 60, color: 'white' }}>
