@@ -8,38 +8,8 @@
   align-items: center;
 }
 
-#edit-profile-page {
-  height: 100%;
-  padding: 100px;
-  display: flex;
-  justify-content: center;
-}
-
-.shape-container {
-  border: 2px solid black;
-  border-radius: 20px;
-  height: 300px;
-  margin-top: 30px;
-  padding: 50px;
-  width: 60%;
-}
-
-.single-shape-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 25px;
-  text-align: center;
-  cursor: pointer;
-}
-
 .selected {
-  background-color: blue !important;
-}
-
-.shape-caption {
-  font-style: italic;
-  margin-top: 5px;
+  border-bottom: 50px solid blue !important;
 }
 
 #circle {
@@ -67,7 +37,8 @@
 
 #rectangle {
   height: 50px;
-  width: 100px;
+  width: 25px;
+  margin-left: 12.5px;
   background-color: green;
   display: block;
 }

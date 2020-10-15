@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import '../App.css';
-import '../style/shapes.css';
+import '../style/canvas.css';
 
+const level = 5;
+let points = level * 60;
+const shapeCosts = {'circle': 20, 'square': 20, 'triangle': 20, 'rectangle': 20};
 
 const EditProfile = () => {
     
@@ -9,6 +11,7 @@ const EditProfile = () => {
   const [shapes, updateShapes] = useState([]);
   const [shapeSize, setSize] = useState(50);
   const [rotation, setRotation] = useState(0);
+  const [needRerender, setRerender] = useState(false);
   const canvas = useRef();
 
   useEffect(() => {
@@ -24,20 +27,16 @@ const EditProfile = () => {
 
   const handleResize = (key) => {
     if (key === 'w') {
-      console.log("Bigger size");
       setSize((prevSize) => (prevSize + 10) > 100 ? 100 : (prevSize + 5));
     } else if (key === 's') {
-      console.log("Smaller size");
       setSize((prevSize) => (prevSize - 10) < 10 ? 10 : (prevSize - 5));
     }
   }
 
   const handleRotate = (key) => {
     if (key === 'a') {
-      console.log("Rotating anti-clockwise");
       setRotation((prevRotation) => ((prevRotation - 90) < 0 ? 270 : (prevRotation - 90)));
     } else if (key === 'd') {
-      console.log("Rotating clockwise");
       setRotation((prevRotation) => ((prevRotation + 90) >= 360 ? 0 : (prevRotation + 90)));
     }
   }
@@ -118,6 +117,13 @@ const EditProfile = () => {
   }
 
   const resetShapes = () => {
+    if (shapes.length === 0) {
+      setErrorMessage("Nothing to clear!");
+      return;
+    }
+    for (let i = 0; i < shapes.length; i++) {
+      points += shapeCosts[shapes[i].type];
+    }
     updateShapes([]);
     const ctx = canvas.current.getContext('2d');
     ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
@@ -165,8 +171,14 @@ const EditProfile = () => {
     var rect = canvas.current.getBoundingClientRect();
     const x = evt.clientX - rect.left;
     const y = evt.clientY - rect.top;
+    if (points - shapeCosts[selected] < 0) {
+      setErrorMessage("Not enough points to buy that")
+      return;
+    }
+    points -= shapeCosts[selected];
 
     updateShapes([...shapes, {type: selected, x, y, size: shapeSize, rotation}]);
+    setErrorMessage("");
   }
 
   const handleCanvasLeave = (evt) => {
@@ -175,58 +187,88 @@ const EditProfile = () => {
   }
 
   const saveAvatar = () => {
-    const dataURL = canvas.current.toDataURL();
-    console.log(dataURL);
 
-    //Save to database
-    var image = new Image();
-    image.id = "pic";
-    image.src = dataURL;
-    document.getElementById('canvasImg').appendChild(image);
+    if (shapes.length === 0) {
+      setErrorMessage("Nothing to save!");
+      return;
+    }
+
+    const dataURL = canvas.current.toDataURL();
 
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({imgURL: dataURL})
     };
-    console.log(requestOptions);
     
     fetch('/profile/updateimg', requestOptions)
       .catch(err => console.log(err))
 
   }
 
+  const clearLastShape = () => {
+    if (shapes.length === 0) {
+      setErrorMessage("No shapes to clear!");
+      return;
+    }
+    const shape = shapes.slice(0, 1)[0];
+    points += shapeCosts[shape.type];
+    updateShapes(shapes.slice(1));
+    setRerender(true);
+  }
+
+  const handleRerender = () => {
+    if (needRerender) {
+      renderCanvas();
+    }
+  }
+
+  const setErrorMessage = (message) => {
+    const error = document.getElementById("error-message");
+    error.innerText = message;
+  }
+
   return (
     <React.Fragment>
       <div className='back-button'><a href='/profile'>⟵   Back</a></div>
-      <div id="edit-profile-page">
-        <div id='shapes-container'>
-          <h2>Click on shape to select it</h2>
-          <div className='single-shape-container'>
-              <div id='circle' onClick={selectCircle}></div>
-              <div className='shape-caption'>40 pts</div>
+      <div id="page-content">
+        <h2>Level: {level} Points: {points} </h2>
+        <div id="edit-profile-page">
+          <div id='shapes-container'>
+            <h2>Click on shape to select it</h2>
+            <div className='single-shape-container'>
+                <div className='shape' id='circle' onClick={selectCircle}></div>
+                <div className='shape-caption'>Cost: {shapeCosts.circle} pts</div>
+            </div>
+            <div className='single-shape-container'>
+                <div className='shape' id='triangle' onClick={selectTriangle}></div>
+                <div className='shape-caption'>Cost: {shapeCosts.triangle} pts</div>
+            </div>
+            <div className='single-shape-container'>
+                <div className='shape' id='square' onClick={selectSquare}></div>
+                <div className='shape-caption'>Cost: {shapeCosts.square} pts</div>
+            </div>
+            <div className='single-shape-container'>
+                <div className='shape' id='rectangle' onClick={selectRectangle}></div>
+                <div className='shape-caption'>Cost: {shapeCosts.rectangle} pts</div>
+            </div>
           </div>
-          <div className='single-shape-container'>
-              <div id='triangle' onClick={selectTriangle}></div>
-              <div className='shape-caption'>60 pts</div>
+        
+          <div id="canvas-container">
+            <h2>Draw Your Avatar</h2>
+            <p id='error-message'></p>
+            <canvas ref={canvas} id="canvas" width='300' height='300' onClick={handleCanvasClick} onMouseLeave={handleCanvasLeave} onMouseMove={handleCanvas}></canvas>
+            <div id='buttons'>
+              <button onClick={saveAvatar}>Save Avatar</button>
+              <button onClick={resetShapes}>Clear Canvas</button>
+              <button onClick={clearLastShape} onMouseLeave={handleRerender}> Clear Last Shape </button>
+            </div>
           </div>
-          <div className='single-shape-container'>
-              <div id='square' onClick={selectSquare}></div>
-              <div className='shape-caption'>60 pts</div>
-          </div>
-          <div className='single-shape-container'>
-              <div id='rectangle' onClick={selectRectangle}></div>
-              <div className='shape-caption'>4000 pts</div>
-          </div>
+          
         </div>
-       
-        <canvas ref={canvas} id="canvas" width='300' height='300' onClick={handleCanvasClick} onMouseLeave={handleCanvasLeave} onMouseMove={handleCanvas}></canvas>
-        <div id='buttons'>
-          <button onClick={saveAvatar}>Save Avatar</button>
-          <button onClick={resetShapes}>Clear Canvas</button>
-        </div>
+        <div id='canvasImg'></div>
       </div>
-      <div id='canvasImg'></div>
+      
           
     </React.Fragment>
   );
