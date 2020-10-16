@@ -14,6 +14,7 @@ import QuizPage from './pages/QuizPageAlt.js';
 import HomePage from './pages/HomePage.js';
 import CreateQuiz from './pages/CreateQuizAlt.js';
 import Quizzes from './pages/Quizzes.js';
+import ChooseUserTypePage from './pages/ChooseUserTypePage.js';
 
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import EditProfile from './pages/Canvas.js';
@@ -25,16 +26,16 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" render={() => <HomePage />} />
-          <Route exact path="/home" render={() => <FrontPage />} />
+          <Route exact path="/" render={() => <ChooseUserTypePage />} />
+          <Route exact path="/home" render={() => <HomePage />} />
+          <Route exact path="/class" render={() => <FrontPage />} />
           <Route exact path="/currentClass" render={() => <CurrentClass />} />
           <Route exact path="/profile" render={() => <Profile name="Christopher Walken" degree="Bachelor of Copy Paste" />} />
           <Route exact path="/editprofile" render={() => <EditProfile />} />
           <Route exact path="/leaderboard" render={() => <Leaderboard />} />
           <Route exact path="/page8" render={() => <Page8 />} />
-          <Route exact path="/Quiz/:id" render={({match}) => <QuizPage match={match} />} />
-          <Route exact path="/CreateQuiz" render={() => 
-          <CreateQuiz />} />
+          <Route exact path="/Quiz/:id" render={({ match }) => <QuizPage match={match} />} />
+          <Route exact path="/CreateQuiz" render={() => <CreateQuiz />} />
           <Route exact path="/quizzes" render={() => <Quizzes />} />
         </Switch>
       </Router>

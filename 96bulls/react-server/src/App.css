@@ -84,6 +84,31 @@
   margin: auto;
 }
 
+.choose-user-page {
+  margin-top: 15%;
+  text-align: center;
+}
+
+.choose-user-card {
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(10px + 2vmin);
+  background-color: white;
+  width: 60vh;
+  margin: auto;
+}
+
+.reaction-container:active {
+  background-color: green;
+} 
+
+.reaction-container:hover div {
+  color: blue;
+}
+
 .current-class-page {
   background-color: rgb(112, 112, 112);
   height: 100%;
