@@ -3,6 +3,7 @@ import './App.css';
 import './style/page8.css'
 import './style/leaderboard.css'
 import './style/page5.css'
+import './style/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
 import FrontPage from './pages/FrontPage.js';
@@ -15,6 +16,8 @@ import HomePage from './pages/HomePage.js';
 import CreateQuiz from './pages/CreateQuizAlt.js';
 import Quizzes from './pages/Quizzes.js';
 import ChooseUserTypePage from './pages/ChooseUserTypePage.js';
+import SignIn from './pages/signin.js';
+import Register from './pages/register.js';
 
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import EditProfile from './pages/Canvas.js';
@@ -28,6 +31,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" render={() => <ChooseUserTypePage />} />
           <Route exact path="/home" render={() => <HomePage />} />
+          <Route exact path="/register" render={() => <Register />} />
+          <Route exact path="/signin" render={() => <SignIn />} />
           <Route exact path="/class" render={() => <FrontPage />} />
           <Route exact path="/currentClass" render={() => <CurrentClass />} />
           <Route exact path="/profile" render={() => <Profile name="Christopher Walken" degree="Bachelor of Copy Paste" />} />

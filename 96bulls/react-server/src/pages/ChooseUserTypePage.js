@@ -13,10 +13,10 @@ const ChooseUserTypePage = (props) => {
         <div className='flex-center' style={{ backgroundColor: '#BF40FF', width: '100%', height: 60, color: 'white' }}>
           <i>Choose user type</i>
         </div>
-        <div className="button" style={{ width: '200px', marginTop: 20 }} onClick={() => { userTypeStore.changeUserType('instructor'); history.push('/home') }}>
+        <div className="button" style={{ width: '200px', marginTop: 20 }} onClick={() => { userTypeStore.changeUserType('instructor'); history.push('/signin') }}>
           Instructor
         </div>
-        <div className="button" style={{ width: '200px' }} onClick={() => { userTypeStore.changeUserType('student'); history.push('/home') }}>
+        <div className="button" style={{ width: '200px' }} onClick={() => { userTypeStore.changeUserType('student'); history.push('/signin') }}>
           Student
         </div>
       </div>
