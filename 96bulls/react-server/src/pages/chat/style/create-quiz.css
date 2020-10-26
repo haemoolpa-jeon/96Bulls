@@ -1,0 +1,37 @@
+
+
+#create-quiz {
+  width: 50vw;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+  background-color: white;
+}
+
+.field-label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#create-quiz input {
+  border-radius: 10px;
+}
+
+#create-quiz input:focus {
+  outline: none;
+}
+
+.quiz-button {
+  border-radius: 40px;
+  background-color: #AC00CB;
+  padding: 10px 40px;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: 500;
+  border: none;
+  width: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 15px;
+}

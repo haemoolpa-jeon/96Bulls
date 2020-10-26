@@ -1,0 +1,48 @@
+
+
+#leaderboard {
+  width: 600px;
+  margin: auto;
+}
+
+#headings {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.boardEntry {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.boardUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 400px;
+}
+
+.boardEntry img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.entryInfo {
+  text-align: center;
+}
+
+.trophyList {
+  display: flex;
+  flex-direction: row;
+}
+
+.trophyList img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  margin: 5px;
+}

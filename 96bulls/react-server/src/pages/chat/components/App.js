@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import styles from '../style/Home.module.css';
+import '../styles/main.scss';
+
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import userTypeStore from '../userTypeStore';
 
-const ChooseUserTypePage = (props) => {
-
-  return (
-    <div className={styles.App}>
+export class App extends Component {
+  render() {
+    return (
+      <div className={styles.App}>
         <div className={styles.container}>
           <title>Altis Academia</title>
         <main className={styles.main}>
@@ -42,7 +44,8 @@ const ChooseUserTypePage = (props) => {
         </footer>
       </div>
       </div>
-  )
+    );
+  }
 }
 
 const mapStateToProps = state => ({
@@ -50,9 +53,9 @@ const mapStateToProps = state => ({
   currentRoom: state.room.currentRoom,
 });
 
-ChooseUserTypePage.propTypes = {
+App.propTypes = {
   currentUser: PropTypes.object,
   currentRoom: PropTypes.object,
 };
 
-export default connect(mapStateToProps)(ChooseUserTypePage);
+export default connect(mapStateToProps)(App);

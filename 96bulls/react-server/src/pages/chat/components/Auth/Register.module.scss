@@ -1,0 +1,19 @@
+@import "../../styles/variable";
+
+.register-form {
+  margin: 10rem auto 0 auto;
+  background-color: $color-grey-light-2;
+}
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.register-info {
+  font-size: 13px;
+  color: $color-grey-dark;
+  margin: 1rem 0;
+}
+
+h1 {
+  color: purple;
+}

@@ -27,6 +27,9 @@ const HomePage = (props) => {
             View Quizzes
           </div>
           : null}
+          <div className="button" style={{ width: '200px', marginTop: 20 }} onClick={() => { history.push('/chat') }}>
+          Chat
+              </div>
       </div>
     </div>
   )
