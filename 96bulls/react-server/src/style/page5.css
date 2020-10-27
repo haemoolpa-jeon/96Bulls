@@ -64,12 +64,18 @@
 #progress {
   width: 40%;
   background-color: green;
+  transition-property: width;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
   height: 25px;
 }
 
 #remaining {
   width: 60%;
   background-color: grey;
+  transition-property: width;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
   height: 25px;
 }
 
