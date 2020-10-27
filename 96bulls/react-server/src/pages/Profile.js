@@ -9,13 +9,13 @@ const Profile = () => {
     const [profileInfo, updateInfo] = useState({});
 
     const goBack = () => {
-        history.push('/');
+        history.goBack();
     }
 
     useEffect(() => {
 
         console.log("fetching data")
-        fetch('/profile/User2')
+        fetch('/profile/Jesse Klein')
           .then(response => response.json())
           .then(data => {
             console.log(data);

@@ -62,7 +62,7 @@
 
 
 #progress {
-  width: 40%;
+  width: 0%;
   background-color: green;
   transition-property: width;
   transition-duration: 0.5s;
@@ -71,7 +71,7 @@
 }
 
 #remaining {
-  width: 60%;
+  width: 100%;
   background-color: grey;
   transition-property: width;
   transition-duration: 0.5s;

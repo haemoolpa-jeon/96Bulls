@@ -28,7 +28,7 @@ const QuizPage = ({match}) => {
         setLoaded(true);
     });
 
-    fetch('/profile/User2')
+    fetch('/profile/Jesse Klein')
     .then(response => response.json())
     .then(data => {
       setUserInfo(data);
@@ -44,18 +44,6 @@ const QuizPage = ({match}) => {
   const answer3 = useRef();
   const answer4 = useRef();
 
-  const submitQuizResult = () => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: 'User2',
-        xpGained: correct * 100,
-        questionsAnswered: correct,
-      })
-    };
-  }
-
   const resetRadioButtons = () => {
     answer1.current.checked = false;
     answer2.current.checked = false;
@@ -67,6 +55,7 @@ const QuizPage = ({match}) => {
     const progress = document.getElementById('progress');
     const remaining = document.getElementById('remaining');
     const correctAnswers = parseInt(document.getElementById('correct-answers').classList[0]);
+    updateXP(correctAnswers);
     let progressPercent = (userInfo.xp + (correctAnswers * 100)) / 10;
     if (progressPercent >= 100) { //Have leveled up
 
@@ -104,6 +93,23 @@ const QuizPage = ({match}) => {
     } 
     progress.style.width = progressPercent + '%';
     remaining.style.width = (100 - progressPercent) + '%';
+    const xpRemaining = document.getElementById('xpRemaining');
+    xpRemaining.innerText = `${(100 - progressPercent) * 10}xp Remaining`;
+  }
+
+  const updateXP = (numCorrect) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: 'Jesse Klein',
+        xpGained: numCorrect * 100,
+        questionsAnswered: questionNumber,
+      })
+    };
+
+    fetch('/profile/xp', requestOptions)
+    .catch(err => console.log(err))
   }
 
   const nextQuestion = (e) => {
@@ -113,7 +119,6 @@ const QuizPage = ({match}) => {
     }
     if (questionNumber === (questions.length - 1)) {
       //Have reached the end of the quiz
-      submitQuizResult();
       setTimeout(setQuizComplete(true), 500);
       setTimeout(runCSSAnimation, 1000);
       return;
@@ -143,7 +148,7 @@ const QuizPage = ({match}) => {
                       <h3 id="correct-answers" className={`${correct}`}>You got {correct} out of {questions.length} correct.</h3>
                       <h3 id='xp'>{correct * 100}XP Gained</h3>
 
-                      <NavLink className='button' to='/'>Home</NavLink>
+                      <NavLink className='button' to='/home'>Home</NavLink>
                 
                       </div>
                     </div>

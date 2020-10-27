@@ -22,7 +22,9 @@ router.get('/all', async (req, res) => {
  */
 router.get('/achievements', async (req, res) => {
 
-  const achievements = await Achievement.find();
+  //first need to get users name
+  const user = await Profile.findOne({name: "Jesse Klein"});
+  const achievements = await Achievement.find({level: { $lte: user.level }, questions: { $lte: user.questionsAnswered }});
   res.json(achievements);
 
 })
