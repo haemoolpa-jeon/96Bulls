@@ -9,7 +9,7 @@ const Profile = () => {
     const [profileInfo, updateInfo] = useState({});
 
     const goBack = () => {
-        history.goBack();
+        history.push('/home');
     }
 
     useEffect(() => {

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useHistory, NavLink } from "react-router-dom"
 import '../style/quizquestion.css';
+import Trophy from './Trophy';
 
 const QuizPage = ({match}) => {
 
@@ -11,7 +12,7 @@ const QuizPage = ({match}) => {
   const [correct, updateCorrect] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
   const [userInfo, setUserInfo] = useState();
-
+  const [achievements, setAchievements] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -57,6 +58,7 @@ const QuizPage = ({match}) => {
     const correctAnswers = parseInt(document.getElementById('correct-answers').classList[0]);
     updateXP(correctAnswers);
     let progressPercent = (userInfo.xp + (correctAnswers * 100)) / 10;
+    getAchievements(progressPercent >= 100, userInfo.level + 1, userInfo.questionsAnswered, userInfo.questionsAnswered + questionNumber);
     if (progressPercent >= 100) { //Have leveled up
 
       const newPercent = progressPercent - 100;
@@ -95,6 +97,27 @@ const QuizPage = ({match}) => {
     remaining.style.width = (100 - progressPercent) + '%';
     const xpRemaining = document.getElementById('xpRemaining');
     xpRemaining.innerText = `${(100 - progressPercent) * 10}xp Remaining`;
+  }
+
+  const getAchievements = (levelUp, newLevel, oldQuestions, newQuestions) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        levelUp,
+        newLevel,
+        oldQuestions,
+        newQuestions: newQuestions + 1
+      })
+    };
+
+    fetch('/profile/get-achievements', requestOptions)
+    .then(data => data.json())
+    .then(data => {
+      setAchievements(data)
+      console.log(data);
+    })
+    .catch(err => console.log(err))
   }
 
   const updateXP = (numCorrect) => {
@@ -151,6 +174,22 @@ const QuizPage = ({match}) => {
                       <NavLink className='button' to='/home'>Home</NavLink>
                 
                       </div>
+                    </div>
+
+                    <div id='achievementsLevelUp'>
+                      {
+                        (achievements.length == 0)
+                        ? <h1></h1>
+                        :  
+                          <>
+                          <h1>You earnt an achievement!</h1>
+                          {
+                          achievements.map((trophy, index) => (
+                            <Trophy key={index} title={trophy.name} description={trophy.description} imageURL={trophy.imageURL} />
+                          ))
+                          }
+                          </>
+                      }
                     </div>
 
                     <div id="levelBar">

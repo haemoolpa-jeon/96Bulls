@@ -53,6 +53,20 @@ router.post('/updateimg', async (req, res) => {
 
 })
 
+router.post('/get-achievements', async (req, res) => {
+  const {levelUp, newLevel, oldQuestions, newQuestions} = req.body;
+  console.log(levelUp, newLevel, oldQuestions, newQuestions);
+  let achievements = [];
+  if (levelUp) {
+    const newAchievement = await Achievement.findOne({level: newLevel});
+    if (newAchievement != null) achievements.push(newAchievement);
+  }
+  const newAchievement = await Achievement.findOne({questions: { $gte: oldQuestions, $lte: newQuestions }})
+  if (newAchievement != null) achievements.push(newAchievement);
+  console.log(achievements);
+  res.json(achievements);
+})
+
 /**
  * Updates the xp of a user after completing a quiz, checks if 
  * they have leveled up or if they have earnt any achievements
@@ -71,14 +85,14 @@ router.post('/xp', async (req, res) => {
     const newProfile = await Profile.updateOne( {name: username}, {
       xp: newXP,
       level: userProfile.level + 1,
-      questionsAnswered: userProfile.questionsAnswered + questionsAnswered
+      questionsAnswered: userProfile.questionsAnswered + questionsAnswered + 1
     });
     res.json({ newProfile, levelUp: true });
     return;
   } else {
     const newProfile = await Profile.updateOne( {name: username}, {
       xp: newXP,
-      questionsAnswered: userProfile.questionsAnswered + questionsAnswered
+      questionsAnswered: userProfile.questionsAnswered + questionsAnswered + 1
     });
     res.json({ newProfile, levelUp: false });
     return;

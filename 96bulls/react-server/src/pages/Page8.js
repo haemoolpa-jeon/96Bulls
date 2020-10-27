@@ -21,13 +21,17 @@ const Page8 = (props) => {
 
   return(
     <div>
-      <div className='back-button' onClick={() => {history.goBack()}}>⟵   Back</div>
+      <div className='back-button' onClick={() => {history.push('/profile')}}>⟵   Back</div>
       <div>
 
         {
-          trophies.map((trophy, index) => (
-            <Trophy key={index} title={trophy.name} description={trophy.description} imageURL={trophy.imageURL} />
-          ))
+          trophies.length > 0
+          ?
+              trophies.map((trophy, index) => (
+                <Trophy key={index} title={trophy.name} description={trophy.description} imageURL={trophy.imageURL} />
+              ))
+          :
+            <h1>Complete quizzes and participate to earn achievements</h1>
         }
 
       </div>
