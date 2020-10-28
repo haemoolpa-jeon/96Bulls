@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './style/Home.module.css';
-
-import './App.css';
+import styles from './pages/style/Home.module.css';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -11,7 +9,7 @@ import userTypeStore from './userTypeStore';
 export class App extends Component {
   render() {
     return (
-      <div className={styles.App}>
+      <div>
         <div className={styles.container}>
           <title>Altis Academia</title>
         <main className={styles.main}>

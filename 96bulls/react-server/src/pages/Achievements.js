@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Trophy from './Trophy'
 import { useHistory } from 'react-router-dom'
-import '../style/achievements.css';
+import './style/achievements.css';
 
-const Page8 = (props) => {
+const Achievement = (props) => {
 
   const [trophies, updateTrophies] = useState([]);
   const history = useHistory();
@@ -43,4 +43,4 @@ const Page8 = (props) => {
 }
 
 
-export default Page8;
+export default Achievement;

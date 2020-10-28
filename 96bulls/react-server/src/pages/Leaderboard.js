@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BoardEntry from './BoardEntry'
 import { useHistory } from "react-router-dom"
-import '../style/leaderboard.css';
+import './style/leaderboard.css';
 
 const Leaderboard = () => {
 

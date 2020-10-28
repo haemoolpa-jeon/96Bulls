@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useHistory, NavLink } from "react-router-dom"
-import '../style/quizquestion.css';
+import './style/quizquestion.css';
 import Trophy from './Trophy';
 
 const QuizPage = ({match}) => {

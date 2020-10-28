@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch, withRouter } from 'react-router-dom'
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import PropTypes from 'prop-types';
@@ -9,12 +8,11 @@ import firebase from './config/firebase';
 import { createStore } from 'redux';
 import { Provider, connect } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './pages/chat/reducers';
-import { setUser, clearUser } from './pages/chat/actions';
-
-import './index.css';
+import rootReducer from './pages/reducers';
+import { setUser, clearUser } from './pages/actions';
 
 //pages
+import App from './App';
 import FrontPage from './pages/FrontPage.js';
 import CurrentClass from './pages/CurrentClass.js';
 import Profile from './pages/Profile.js';
@@ -23,10 +21,10 @@ import QuizPage from './pages/QuizPageAlt.js';
 import HomePage from './pages/HomePage.js';
 import CreateQuiz from './pages/CreateQuizAlt.js';
 import Quizzes from './pages/Quizzes.js';
-import ChatPage from './pages/chat/components/chatPage.js'
-import Login from './pages/chat/components/Auth/Login';
-import Register from './pages/chat/components/Auth/Register';
-import Spinner from './pages/chat/components/common/Spinner';
+import ChatPage from './pages/chatPage.js'
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+import Spinner from './pages/components/common/Spinner';
 import EditProfile from './pages/Canvas.js';
 
 const store = createStore(rootReducer, composeWithDevTools());

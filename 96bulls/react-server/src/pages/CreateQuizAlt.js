@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom'
 import '../App.css';
-import '../style/create-quiz.css';
+import './style/create-quiz.css';
 
 const CreateQuiz = () => {
 

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import '../style/canvas.css';
+import './style/canvas.css';
 
 const shapeCosts = {'circle': 20, 'square': 20, 'triangle': 20, 'rectangle': 20};
 
