@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Trophy from './Trophy'
 import { useHistory } from 'react-router-dom'
+import '../style/achievements.css';
 
 const Page8 = (props) => {
 
@@ -22,7 +23,7 @@ const Page8 = (props) => {
   return(
     <div>
       <div className='back-button' onClick={() => {history.push('/profile')}}>⟵   Back</div>
-      <div>
+      <div id='Achievements'>
 
         {
           trophies.length > 0

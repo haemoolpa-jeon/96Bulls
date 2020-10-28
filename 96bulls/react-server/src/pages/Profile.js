@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from "react-router-dom";
-import '../App.css';
+import '../style/profile.css';
 
 
 const Profile = () => {
@@ -30,7 +30,7 @@ const Profile = () => {
                 <h2>{profileInfo.name}</h2>
                 <h3>{profileInfo.degree}</h3>
                 <NavLink className="button navButton" to="/editprofile">Edit Avatar</NavLink>
-                <NavLink className="button navButton" to="/page8">Achievements</NavLink>
+                <NavLink className="button navButton" to="/achievements">Achievements</NavLink>
             </div>
             <div id="levelBar">
                 <div id="progressBar">

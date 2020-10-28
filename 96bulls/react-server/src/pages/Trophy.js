@@ -10,7 +10,7 @@ const Trophy = ({title, description, imageURL}) => {
       <img src={`/${imageURL}`} alt="not loaded"></img>
       <div className="trophyContent">
         <h2>{title}</h2>
-        <p>"{description}"</p>
+        <p>{description}</p>
       </div>
     </div>
   );

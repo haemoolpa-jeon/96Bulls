@@ -5,16 +5,14 @@ import firebase from './config/firebase';
 import * as serviceWorker from './serviceWorker';
 
 import './App.css';
-import './style/page8.css'
-import './style/page5.css'
-import './style/Home.module.css'
-import 'bootstrap/dist/css/bootstrap.css'
+import './style/Home.module.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import FrontPage from './pages/FrontPage.js';
 import CurrentClass from './pages/CurrentClass.js';
 import Profile from './pages/Profile.js';
 import Leaderboard from './pages/Leaderboard.js';
-import Page8 from './pages/Page8.js';
+import Achievements from './pages/Achievements.js';
 import QuizPage from './pages/QuizPageAlt.js';
 import HomePage from './pages/HomePage.js';
 import CreateQuiz from './pages/CreateQuizAlt.js';
@@ -67,7 +65,7 @@ class App extends Component {
         <Route exact path="/profile" render={() => <Profile name="Christopher Walken" degree="Bachelor of Copy Paste" />} />
         <Route exact path="/editprofile" render={() => <EditProfile />} />
         <Route exact path="/leaderboard" render={() => <Leaderboard />} />
-        <Route exact path="/page8" render={() => <Page8 />} />
+        <Route exact path="/achievements" render={() => <Achievements />} />
         <Route exact path="/Quiz/:id" render={({ match }) => <QuizPage match={match} />} />
         <Route exact path="/CreateQuiz" render={() => <CreateQuiz />} />
         <Route exact path="/quizzes" render={() => <Quizzes />} />
