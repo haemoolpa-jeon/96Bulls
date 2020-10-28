@@ -38,12 +38,12 @@ export class SidePanel extends Component {
       <div className={styles['side-panel']}>
         <button onClick={this.openModal} type="button">
           <Tooltip title="Create Chat Room">
-            <Icon className={styles.icon}>add_box</Icon>
+            Create
           </Tooltip>
         </button>
         <button onClick={this.handleLogout} type="button">
           <Tooltip title="Log Out">
-            <Icon className={styles.icon}>directions_run</Icon>
+            Logout
           </Tooltip>
         </button>
         <CreateRoomModal

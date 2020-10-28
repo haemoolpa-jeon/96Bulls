@@ -96,7 +96,7 @@ class Login extends Component {
             id="password"
             value={password}
             name="password"
-            placeholder="Password (minimum 6 character)"
+            placeholder="Password"
             type="password"
             onChange={this.handleChange}
           />

@@ -122,7 +122,7 @@ class Register extends Component {
             id="email"
             value={email}
             name="email"
-            placeholder="email"
+            placeholder="Email"
             type="email"
             onChange={this.handleChange}
           />
@@ -138,7 +138,7 @@ class Register extends Component {
             id="password"
             value={password}
             name="password"
-            placeholder="Password (minimum 6 character)"
+            placeholder="Password"
             type="password"
             onChange={this.handleChange}
           />
@@ -157,7 +157,7 @@ class Register extends Component {
           )}
           <p className={styles['register-info']}>
             {'Have you signed up already? '}
-            <Link to="/login">Log In</Link>
+            <Link to="/signin">Log In</Link>
           </p>
           <div className={styles['button-wrapper']}>
             <Button
