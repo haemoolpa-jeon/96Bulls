@@ -57,3 +57,13 @@
   color: rgb(248, 10, 10);
   height: 25px;
 }
+
+#buttons button {
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: white;
+  background-color: #9919DD;
+  padding: 2px;
+  margin: 5px;
+}

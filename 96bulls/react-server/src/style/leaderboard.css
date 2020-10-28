@@ -3,36 +3,42 @@
 #leaderboard {
   width: 600px;
   margin: auto;
-}
-
-#headings {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.boardEntry {
-  margin: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  background-color: white;
+  border-radius: 15px;
+  margin-bottom: 50px;
 }
 
 .boardUser {
+  margin-left: 60px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  width: 400px;
 }
 
-.boardEntry img {
+
+
+th {
+  text-align: center;
+  font-size: 30px;
+}
+
+.position {
+  font-size: 30px;
+  padding-left: 50px;
+}
+
+.boardEntry {
+  padding: 10px;
+}
+
+.boardImg {
   width: 100px;
   height: 100px;
   object-fit: cover;
-}
-
-.entryInfo {
-  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  border: 1px solid black;
+  margin-right: 30px;
 }
 
 .trophyList {
@@ -41,8 +47,8 @@
 }
 
 .trophyList img {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   object-fit: cover;
   margin: 5px;
 }

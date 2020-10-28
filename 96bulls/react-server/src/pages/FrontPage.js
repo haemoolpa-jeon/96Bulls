@@ -38,7 +38,7 @@ const FrontPage = (props) => {
                     </div>
                     <div>
                         <p className='muted' style={{ fontSize: 14, marginBottom: 30 }}>DECO3801 - Design computing studio 3</p>
-                    </div>
+                    </div> 
                     <div className="button" onClick={relocateToLeaderboard}>
                         Course Leaderboard
                     </div>

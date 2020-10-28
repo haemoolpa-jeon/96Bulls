@@ -6,7 +6,6 @@ import * as serviceWorker from './serviceWorker';
 
 import './App.css';
 import './style/page8.css'
-import './style/leaderboard.css'
 import './style/page5.css'
 import './style/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css'

@@ -13,17 +13,34 @@ const router = express.Router();
 router.get('/all', async (req, res) => {
 
   const profiles = await Profile.find().sort({ level: "desc", xp: "desc" });
-  res.json(profiles);
+
+  //Get achievements for each profile
+  let adjustedProfiles = [];
+  for (let i = 0; i < profiles.length; i++) {
+    const trophyList = await Achievement.find({level: { $lte: profiles[i].level }, questions: { $lte: profiles[i].questionsAnswered }});
+    adjustedProfiles.push({
+      name: profiles[i].name,
+      level: profiles[i].level,
+      xp: profiles[i].xp,
+      questionsAnswered: profiles[i].questionsAnswered,
+      degree: profiles[i].degree,
+      avatarURL: profiles[i].avatarURL,
+      trophyList
+    });
+  }
+
+  res.json(adjustedProfiles);
 
 })
 
 /**
  * Gets the achievements for the profile, atm just returns them all
  */
-router.get('/achievements', async (req, res) => {
+router.get('/achievements/:name', async (req, res) => {
 
   //first need to get users name
-  const user = await Profile.findOne({name: "Jesse Klein"});
+  const { name } = req.params;
+  const user = await Profile.findOne({name});
   const achievements = await Achievement.find({level: { $lte: user.level }, questions: { $lte: user.questionsAnswered }});
   res.json(achievements);
 

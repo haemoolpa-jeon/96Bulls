@@ -10,7 +10,7 @@ const Page8 = (props) => {
   useEffect(() => {
 
     console.log("fetching data")
-    fetch('/profile/achievements')
+    fetch('/profile/achievements/Jesse Klein')
       .then(response => response.json())
       .then(data => {
         console.log(data);

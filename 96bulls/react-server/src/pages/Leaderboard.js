@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BoardEntry from './BoardEntry'
 import { useHistory } from "react-router-dom"
+import '../style/leaderboard.css';
 
 const Leaderboard = () => {
 
@@ -14,16 +15,19 @@ const Leaderboard = () => {
   const renderProfiles = () => {
     return (
       profiles.map((profile, index) => (
-        <BoardEntry 
-            key={index}
-            position={index} 
-            avatarURL={profile.avatarURL} 
-            name={profile.name} 
-            degree={profile.degree} 
-            level={`Level: ${profile.level}`} 
-            trophyList={[]}  
-        />)
-      )
+        <tr>
+          <BoardEntry 
+              key={index}
+              position={index+1} 
+              avatarURL={profile.avatarURL} 
+              name={profile.name} 
+              degree={profile.degree} 
+              level={`Level: ${profile.level}`} 
+              xp={`xp: ${profile.xp}`}
+              trophyList={profile.trophyList}  
+          />
+        </tr>
+      ))
     )
   }
 
@@ -33,23 +37,22 @@ const Leaderboard = () => {
     fetch('/profile/all')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         updateProfiles(data);
       });
   
   }, []);
 
   return(
-      <React.Fragment>
+      <>
         <div className='back-button' onClick={goBack}>⟵   Back</div>
-        <div id="leaderboard">
-          <div id='headings'>
-            <h1>Position</h1>
-            <h1>User</h1>
-          </div>
+        <table id='leaderboard'>
+          <tr>
+            <th>Position</th>
+            <th>User</th>
+          </tr>
           {renderProfiles()}
-        </div>
-      </React.Fragment>
+        </table>
+      </>
   );
 
 }

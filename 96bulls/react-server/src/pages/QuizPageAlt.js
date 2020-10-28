@@ -36,7 +36,7 @@ const QuizPage = ({match}) => {
     });
 
 
-  }, []);
+  });
 
 
   const question = useRef();
@@ -178,8 +178,8 @@ const QuizPage = ({match}) => {
 
                     <div id='achievementsLevelUp'>
                       {
-                        (achievements.length == 0)
-                        ? <h1></h1>
+                        (achievements.length === 0)
+                        ? <></>
                         :  
                           <>
                           <h1>You earnt an achievement!</h1>
@@ -193,7 +193,7 @@ const QuizPage = ({match}) => {
                     </div>
 
                     <div id="levelBar">
-                      <h1 id='levelUp'></h1>
+                      <div id='levelUp'></div>
                       <div id="progressBar">
                           <div id="levels">
                               <h3 id='levelA'>Level {userInfo.level}</h3>

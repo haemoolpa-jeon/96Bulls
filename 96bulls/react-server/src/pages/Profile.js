@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useHistory } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom";
 import '../App.css';
 
 
@@ -13,8 +13,6 @@ const Profile = () => {
     }
 
     useEffect(() => {
-
-        console.log("fetching data")
         fetch('/profile/Jesse Klein')
           .then(response => response.json())
           .then(data => {

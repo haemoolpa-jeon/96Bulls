@@ -1,18 +1,35 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import '../style/canvas.css';
 
-const level = 5;
-let points = level * 60;
 const shapeCosts = {'circle': 20, 'square': 20, 'triangle': 20, 'rectangle': 20};
 
 const EditProfile = () => {
     
+  const history = useHistory();
   const [selected, changeSelected] = useState(false);
   const [shapes, updateShapes] = useState([]);
   const [shapeSize, setSize] = useState(50);
   const [rotation, setRotation] = useState(0);
   const [needRerender, setRerender] = useState(false);
+  const [level, setLevel] = useState();
+  const [points, setPoints] = useState();
   const canvas = useRef();
+
+  const goBack = () => {history.push('/profile');}
+
+  //When the page first loads, get the user's level
+  //So taht we can scale the points
+  useEffect(() => {
+    fetch('/profile/Jesse Klein')
+      .then(response => response.json())
+      .then(data => {
+        setLevel(data.level);
+        setPoints(data.level * 60 + 100);
+      })
+  
+  }, []);
+
 
   useEffect(() => {
     window.addEventListener('keydown', (event) => {
@@ -122,7 +139,7 @@ const EditProfile = () => {
       return;
     }
     for (let i = 0; i < shapes.length; i++) {
-      points += shapeCosts[shapes[i].type];
+      setPoints((prev) => prev + shapeCosts[shapes[i].type]);
     }
     updateShapes([]);
     const ctx = canvas.current.getContext('2d');
@@ -175,7 +192,7 @@ const EditProfile = () => {
       setErrorMessage("Not enough points to buy that")
       return;
     }
-    points -= shapeCosts[selected];
+    setPoints((prev) => prev - shapeCosts[selected]);
 
     updateShapes([...shapes, {type: selected, x, y, size: shapeSize, rotation}]);
     setErrorMessage("");
@@ -212,7 +229,7 @@ const EditProfile = () => {
       return;
     }
     const shape = shapes.slice(0, 1)[0];
-    points += shapeCosts[shape.type];
+    setPoints((prev) => prev + shapeCosts[shape.type]);
     updateShapes(shapes.slice(1));
     setRerender(true);
   }
@@ -230,7 +247,7 @@ const EditProfile = () => {
 
   return (
     <React.Fragment>
-      <div className='back-button'><a href='/profile'>⟵   Back</a></div>
+      <div className='back-button' onClick={goBack}>⟵   Back</div>
       <div id="page-content">
         <h2>Level: {level} Points: {points} </h2>
         <div id="edit-profile-page">
