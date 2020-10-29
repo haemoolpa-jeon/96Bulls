@@ -34,10 +34,6 @@ const FrontPage = (props) => {
         history.push('/quizzes');
     }
 
-    const relocateToCreateQuiz = () => {
-        history.push('/CreateQuiz');
-    }
-
     const relocateToClass = () => {
         console.log("Relocating to class");
         history.push('/currentClass');
@@ -65,9 +61,6 @@ const FrontPage = (props) => {
                     </div>
                     <div className="button" onClick={relocateToQuizzes}>
                         View Quizzes
-                    </div>
-                    <div className="button" onClick={relocateToCreateQuiz}>
-                        Create quiz
                     </div>
                 </div>
             </div>

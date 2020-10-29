@@ -23,8 +23,8 @@ const HomePage = (props) => {
           Leaderboard
               </div>
         {userTypeStore.currentUserType === 'instructor' ?
-          <div className="button" style={{ width: '200px' }} onClick={() => history.push('/quizzes')}>
-            View Quizzes
+          <div className="button" style={{ width: '200px' }} onClick={() => history.push('/CreateQuiz')}>
+            Create Quiz
           </div>
           : null}
           <div className="button" style={{ width: '200px', marginTop: 20 }} onClick={() => { history.push('/chat') }}>
