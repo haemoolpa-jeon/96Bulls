@@ -5,6 +5,7 @@ const Profile = require('../DB/Profile');
 const Achievement = require('../DB/Achievement')
 const router = express.Router();
 
+const profileName = "Jesse Klein";
 
 /**
  * Gets all of the users in the database, in order of their score
@@ -63,7 +64,7 @@ router.post('/updateimg', async (req, res) => {
 
   const { imgURL } = req.body;
 
-  let userProfile = await Profile.findOne({ name: "User2" });
+  let userProfile = await Profile.findOne({ name: profileName });
   userProfile = await userProfile.update({ avatarURL: imgURL });
 
   res.sendStatus(200);

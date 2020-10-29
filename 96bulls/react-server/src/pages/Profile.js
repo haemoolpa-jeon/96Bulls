@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from "react-router-dom";
-import '../pages/style/page5.css';
+import '../pages/style/profile.css';
 
 
 const Profile = () => {

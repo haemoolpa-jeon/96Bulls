@@ -26,6 +26,7 @@ import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import Spinner from './pages/components/common/Spinner';
 import EditProfile from './pages/Canvas.js';
+import Achievements from './pages/Achievements.js';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
@@ -54,6 +55,7 @@ class Root extends Component {
         <Route exact path="/register" render={() => <Register />} />
         <Route exact path="/signin" render={() => <Login />} />
         <Route exact path="/class" render={() => <FrontPage />} />
+        <Route exact path="/achievements" render={() => <Achievements />} />
         <Route exact path="/currentClass" render={() => <CurrentClass />} />
         <Route exact path="/profile" render={() => <Profile name="Christopher Walken" degree="Bachelor of Copy Paste" />} />
         <Route exact path="/editprofile" render={() => <EditProfile />} />

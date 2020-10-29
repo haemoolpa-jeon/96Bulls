@@ -19,9 +19,11 @@ const BoardEntry = ({position, avatarURL, name, degree, level, trophyList, xp}) 
           <div className="entryInfo">
             <h3>{name}</h3>
             <h3>{degree}</h3>
-            <h3>{level}</h3>
-            <h3>{xp}</h3>
-            <div className="trophyList">{mapTrophys()}</div>
+            <div className='levelxp'>
+              <h3>{level}</h3>
+              <h3>{xp}</h3>
+              <div className="trophyList">{mapTrophys()}</div>
+            </div>
           </div>
         </div>
       </td>

@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import userTypeStore from './userTypeStore';
 
-import NavBar from './pages/components/navbar'
 
 export class App extends Component {
   render() {
