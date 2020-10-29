@@ -2,15 +2,27 @@ import React, { useEffect, useState } from 'react';
 import BoardEntry from './BoardEntry'
 import { useHistory } from "react-router-dom"
 import './style/leaderboard.css';
+import firebase from '../config/firebase';
 
 const Leaderboard = () => {
 
   const history = useHistory();
   const [profiles, updateProfiles] = useState([]); 
 
-  const goBack = () => {
-    history.goBack();
+  const goHome = () => {
+    history.push('/home');
   }
+  
+  const goBack = () => {
+    history.push('/class');
+  }
+  
+  const handleLogout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => console.log('Logout'));
+  };
 
   const renderProfiles = () => {
     return (
@@ -44,7 +56,9 @@ const Leaderboard = () => {
 
   return(
       <>
-        <div className='back-button' onClick={goBack}>⟵   Back</div>
+        <div className='back-button' onClick={goBack} style={{ display: 'inline-block' }}>⟵   Back</div>
+                <div className='back-button' onClick={goHome} style={{ display: 'inline-block' }}>Home</div>
+                <div className='back-button' style={{ display: 'inline-block' }} onClick={handleLogout}>Logout</div>
         <table id='leaderboard'>
           <tr>
             <th>Position</th>

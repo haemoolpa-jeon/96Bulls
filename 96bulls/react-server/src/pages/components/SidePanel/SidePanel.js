@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import styles from './SidePanel.module.scss';
-import Icon from '@material-ui/core/Icon';
-import Tooltip from '@material-ui/core/Tooltip';
 import CreateRoomModal from './CreateRoomModal/CreateRoomModal';
 import firebase from '../../../config/firebase';
 import PropTypes from 'prop-types';
@@ -37,20 +35,16 @@ export class SidePanel extends Component {
     return (
       <div className={styles['side-panel']}>
         <button onClick={this.openModal} type="button">
-          <Tooltip title="Create Chat Room">
             Create
-          </Tooltip>
         </button>
         <button onClick={this.handleLogout} type="button">
-          <Tooltip title="Log Out">
             Logout
-          </Tooltip>
         </button>
         <CreateRoomModal
           currentUser={currentUser}
           isOpen={CreateRoomModalIsOpen}
           closeModal={this.closeModal}
-        />
+        />  
       </div>
     );
   }

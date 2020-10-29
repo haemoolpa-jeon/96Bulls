@@ -150,11 +150,7 @@ class MessageForm extends Component {
             className={styles['upload-button']}
             onClick={this.openModal}
           >
-            <Tooltip title="Upload Photo">
-              <Icon className={styles['upload-icon']}>
-              add_to_photos
-              </Icon>
-            </Tooltip>
+            Upload
           </button>
           <input
             disabled={!room}

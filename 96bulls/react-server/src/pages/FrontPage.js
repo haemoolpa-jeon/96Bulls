@@ -2,11 +2,27 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css'
+import firebase from '../config/firebase';
 
 
 const FrontPage = (props) => {
 
     const history = useHistory();
+
+    const goHome = () => {
+        history.push('/home');
+    }
+
+    const goBack = () => {
+        history.push('/home');
+    }
+
+    const handleLogout = () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(() => console.log('Logout'));
+      };
 
     const relocateToLeaderboard = () => {
         console.log('relocating to leaderboard');
@@ -30,7 +46,9 @@ const FrontPage = (props) => {
 
     return (
         <div>
-            <div className='back-button' onClick={() => { history.goBack() }}>⟵   Back</div>
+            <div className='back-button' onClick={goBack} style={{ display: 'inline-block' }}>⟵   Back</div>
+                <div className='back-button' onClick={goHome} style={{ display: 'inline-block' }}>Home</div>
+                <div className='back-button' style={{ display: 'inline-block' }} onClick={handleLogout}>Logout</div>
             <div className="home-page">
                 <div className="home-card">
                     <div className='flex-center' style={{ backgroundColor: '#BF40FF', width: '100%', height: 60, color: 'white' }}>

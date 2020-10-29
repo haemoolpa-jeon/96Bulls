@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom'
 import '../App.css';
 import './style/create-quiz.css';
+import firebase from '../config/firebase';
 
 const CreateQuiz = () => {
 
@@ -19,9 +20,20 @@ const CreateQuiz = () => {
 
   const history = useHistory();
 
-  const goBack = () => {
-    history.goBack();
+  const goHome = () => {
+    history.push('/home');
   }
+  
+  const goBack = () => {
+    history.push('/class');
+  }
+  
+  const handleLogout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => console.log('Logout'));
+  };
 
   const submitQuiz = () => {
 
@@ -70,7 +82,9 @@ const CreateQuiz = () => {
 
   return (
     <>
-    <div className='back-button' onClick={goBack}>⟵   Back</div>
+    <div className='back-button' onClick={goBack} style={{ display: 'inline-block' }}>⟵   Back</div>
+                <div className='back-button' onClick={goHome} style={{ display: 'inline-block' }}>Home</div>
+                <div className='back-button' style={{ display: 'inline-block' }} onClick={handleLogout}>Logout</div>
     <div id='create-quiz'>
       <h1 id="title">Create Quiz</h1>
     {
