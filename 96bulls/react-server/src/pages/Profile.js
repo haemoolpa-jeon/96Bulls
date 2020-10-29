@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from "react-router-dom";
 import '../pages/style/profile.css';
+import firebase from '../config/firebase';
 
 
 const Profile = () => {
@@ -11,6 +12,17 @@ const Profile = () => {
     const goBack = () => {
         history.push('/home');
     }
+
+    const goHome = () => {
+        history.push('/home');
+    }
+
+    const handleLogout = () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(() => console.log('Logout'));
+      };
 
     useEffect(() => {
         fetch('/profile/Jesse Klein')
@@ -24,7 +36,11 @@ const Profile = () => {
 
     return (
         <div id='page5'>
-            <div className='back-button' onClick={goBack}>⟵   Back</div>
+            <div>
+                <div className='back-button' onClick={goBack} style={{ display: 'inline-block' }}>⟵   Back</div>
+                <div className='back-button' onClick={goHome} style={{ display: 'inline-block' }}>Home</div>
+                <div className='back-button' style={{ display: 'inline-block' }} onClick={handleLogout}>Logout</div>
+            </div>
             <div id="profile-main">
                 <img src={profileInfo.avatarURL} alt="not loaded"></img>
                 <h2>{profileInfo.name}</h2>

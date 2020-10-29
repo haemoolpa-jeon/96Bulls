@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from "react-router-dom"
 import './style/quizzes.css'
+import firebase from '../config/firebase';
 
 const Quizzes = () => {
 
@@ -20,13 +21,26 @@ const Quizzes = () => {
 
   const history = useHistory();
 
-  const goBack = () => {
-    history.goBack();
+  const goHome = () => {
+    history.push('/home');
   }
+  
+  const goBack = () => {
+    history.push('/class');
+  }
+  
+  const handleLogout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => console.log('Logout'));
+  };
 
   return (
     <>
-      <div className='back-button' onClick={goBack}>⟵   Back</div>
+      <div className='back-button' onClick={goBack} style={{ display: 'inline-block' }}>⟵   Back</div>
+      <div className='back-button' onClick={goHome} style={{ display: 'inline-block' }}>Home</div>
+      <div className='back-button' style={{ display: 'inline-block' }} onClick={handleLogout}>Logout</div>
       {
         loaded
         ?

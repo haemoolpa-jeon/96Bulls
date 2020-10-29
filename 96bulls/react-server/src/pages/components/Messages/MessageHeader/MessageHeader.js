@@ -85,9 +85,7 @@ class MessageHeader extends Component {
             </button>
           </div>
           <button type="button" onClick={this.openModal} disabled={!currentRoom}>
-            <Tooltip title="Invite">
-              <Icon className={styles.icon}>person_add</Icon>
-            </Tooltip>
+            Invite user
           </button>
         </Paper>
         <UserInviteModal
