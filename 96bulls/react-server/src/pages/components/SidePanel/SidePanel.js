@@ -5,6 +5,7 @@ import firebase from '../../../config/firebase';
 import PropTypes from 'prop-types';
 import { clearUser, clearRoom } from '../../actions';
 import { connect } from 'react-redux';
+import userTypeStore from '../../../userTypeStore';
 
 export class SidePanel extends Component {
   state = {
@@ -34,9 +35,11 @@ export class SidePanel extends Component {
     const { currentUser } = this.props;
     return (
       <div className={styles['side-panel']}>
-        <button onClick={this.openModal} type="button">
-            Create
-        </button>
+      {userTypeStore.currentUserType === 'instructor' ?
+          <button onClick={this.openModal} type="button">
+          Create
+      </button>
+          : null}
         <button onClick={this.handleLogout} type="button">
             Logout
         </button>
