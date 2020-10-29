@@ -18,6 +18,7 @@
   background-color: white;
   border: 2px solid black;
   border-radius: 20px;
+  padding-bottom: 15px;
 }
 
 #profile-main img {
@@ -38,7 +39,7 @@
 
 #levelBar {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   display: flex;
   flex-direction: column;
   width: 70vw;
