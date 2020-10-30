@@ -1,8 +1,10 @@
+/* Board to put components */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './Paper.module.scss';
+import styles from './Board.module.scss';
 
-class Paper extends Component {
+class Board extends Component {
   render() {
     const { children, className } = this.props;
     return (
@@ -13,9 +15,9 @@ class Paper extends Component {
   }
 }
 
-Paper.propTypes = {
+Board.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
 
-export default Paper;
+export default Board;

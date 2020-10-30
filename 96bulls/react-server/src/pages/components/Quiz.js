@@ -1,3 +1,5 @@
+/* Quiz function to show quiz to students and get markes */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';

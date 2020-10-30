@@ -1,7 +1,9 @@
+/* Actual Messages component */
+
 import React, { Component } from 'react';
 import MessageHeader from './MessageHeader/MessageHeader';
 import MessageForm from './MessageForm';
-import Paper from '../common/Paper';
+import Board from '../common/Board';
 import Message from './Message';
 import firebase from '../../../config/firebase';
 import styles from './Messages.module.scss';
@@ -75,11 +77,11 @@ class Messages extends Component {
         <MessageHeader
           currentRoom={currentRoom}
         />
-        <Paper className={styles['custom-paper']}>
+        <Board className={styles['custom-paper']}>
           <div className={styles['message-content']} ref={this.messageContentRef}>
             {this.displayMessages(messages)}
           </div>
-        </Paper>
+        </Board>
         <MessageForm
           scrollDown={this.scrollDown}
           currentUser={currentUser}

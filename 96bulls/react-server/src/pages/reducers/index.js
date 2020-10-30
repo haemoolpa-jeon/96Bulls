@@ -1,3 +1,5 @@
+/* Redux Reducer to initialise user and room */
+
 import { combineReducers } from 'redux';
 import * as actionTypes from '../actions/types';
 

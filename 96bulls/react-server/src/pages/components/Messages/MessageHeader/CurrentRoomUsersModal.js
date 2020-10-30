@@ -1,11 +1,13 @@
+/* Modal to show current user information */
+
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import UserInfoItem from '../../common/UserInfoItem';
+import UserInfos from '../../common/UserInfos';
 
 class CurrentRoomUsersModal extends Component {
   displayUsers = users => users.length > 0 && users.map(user => (
-    <UserInfoItem
+    <UserInfos
       user={user}
       onClick={() => this.inviteUser(user)}
       key={user.id}
@@ -19,7 +21,7 @@ class CurrentRoomUsersModal extends Component {
         left: '50%',
         right: 'auto',
         bottom: 'auto',
-        width: '35rem',
+        width: '40rem',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         border: 'none',

@@ -1,8 +1,10 @@
+/* User Informations such as name and avatar */
+
 import React, { Component } from 'react';
-import styles from './UserInfoItem.module.scss';
+import styles from './UserInfos.module.scss';
 import PropTypes from 'prop-types';
 
-class UserInfoItem extends Component {
+class UserInfos extends Component {
   render() {
     const { user, onClick } = this.props;
     return (
@@ -17,9 +19,9 @@ class UserInfoItem extends Component {
   }
 }
 
-UserInfoItem.propTypes = {
+UserInfos.propTypes = {
   user: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
-export default UserInfoItem;
+export default UserInfos;

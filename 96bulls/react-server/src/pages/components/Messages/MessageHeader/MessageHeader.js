@@ -1,5 +1,7 @@
+/* Header of Message */
+
 import React, { Component, Fragment } from 'react';
-import Paper from '../../common/Paper';
+import Board from '../../common/Board';
 import PropTypes from 'prop-types';
 import styles from './MessageHeader.module.scss';
 import UserInviteModal from './UserInviteModal';
@@ -19,9 +21,7 @@ class MessageHeader extends Component {
     this.addListeners();
   }
 
-  /**
-   * 컴포넌트가 unmount될 때 이벤트 리스너를 제거합니다.
-   */
+  //Remove event listner when unmounted
   componentWillUnmount() {
     this.removeListeners();
   }
@@ -46,10 +46,7 @@ class MessageHeader extends Component {
     this.setState({ UserListModalIsOpen: false });
   };
 
-  /**
-   * 이벤트 리스너를 등록합니다.
-   * DB에서 roodId의 유저가 추가 될 때마다 실행 됩니다.
-   */
+  //Add Event listner, so it runs when rootID is added to DB
   addRoomListener = () => {
     const { roomsRef, currentRoom } = this.state;
     const currentRoomUsers = [];
@@ -70,7 +67,7 @@ class MessageHeader extends Component {
     const { UserListModalIsOpen, currentRoomUsers, CurrentRoomUsersIsOpen } = this.state;
     return (
       <Fragment>
-        <Paper className={styles['message-header']}>
+        <Board className={styles['message-header']}>
           <div className={styles['room-info']}>
             <h3 className={styles['room-name']}>{`# ${currentRoom ? currentRoom.name : 'Welcome to Open Chat'}`}</h3>
             <button
@@ -82,10 +79,10 @@ class MessageHeader extends Component {
               {`Number of Users : ${currentRoomUsers.length}`}
             </button>
           </div>
-          <button type="button" onClick={this.openModal} disabled={!currentRoom}>
+          <button type="button" onClick={this.openModal} style = {{backgroundColor : '#bbb0dc', color : 'white', width: '120px', height: '50px'}} disabled={!currentRoom}>
             Invite user
           </button>
-        </Paper>
+        </Board>
         <UserInviteModal
           isOpen={UserListModalIsOpen}
           closeModal={this.closeModal}

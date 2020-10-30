@@ -1,3 +1,5 @@
+/* Achievements that shows achievements user has amde */
+
 import React, { useEffect, useState } from 'react';
 import Trophy from './Trophy'
 import { useHistory } from 'react-router-dom'

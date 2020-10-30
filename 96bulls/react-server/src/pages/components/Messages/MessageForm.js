@@ -1,3 +1,5 @@
+/* Form type of Message */
+
 import React, { Component } from 'react';
 import firebase from '../../../config/firebase';
 import { v4 as uuidv4 } from 'uuid'
@@ -51,18 +53,6 @@ class MessageForm extends Component {
     return message;
   };
 
-  /**
-   * message in DB
-   * messages: {
-   *  roomId : {
-   *    messageId : {
-   *      content: string,
-   *      id: string,
-   *      users: array
-   *    }
-   *  }
-   * }
-   */
   sendMessage = (event) => {
     if (event.key === 'Enter') {
       const { currentRoom, scrollDown } = this.props;
@@ -84,9 +74,7 @@ class MessageForm extends Component {
     }
   };
 
-  /**
-   * Upload image to storage
-   */
+  //Uploading images to Firebase Storage
   uploadFile = (file, metadata) => {
     const pathToUpload = this.state.room.id;
     const ref = this.state.messagesRef;

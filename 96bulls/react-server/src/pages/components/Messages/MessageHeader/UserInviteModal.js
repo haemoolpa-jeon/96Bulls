@@ -4,7 +4,7 @@ import firebase from '../../../../config/firebase';
 import { connect } from 'react-redux';
 import { setCurrentRoom } from '../../../actions';
 import PropTypes from 'prop-types';
-import UserInfoItem from '../../common/UserInfoItem';
+import UserInfos from '../../common/UserInfos';
 
 export class UserInviteModal extends Component {
   state = {
@@ -18,9 +18,8 @@ export class UserInviteModal extends Component {
     this.addListeners();
   }
 
-  /**
-   * 컴포넌트가 unmount될 때 이벤트 리스너를 제거합니다.
-   */
+  //Remove Event listener when unmounted
+  
   componentWillUnmount() {
     this.removeListeners();
   }
@@ -29,10 +28,7 @@ export class UserInviteModal extends Component {
     this.addUserListener();
   };
 
-  /**
-   * 이벤트 리스너를 등록합니다.
-   * DB에서 유저가 추가 될 때마다 실행 됩니다.
-   */
+  //Add Event listner that runs when user is added on DB
   addUserListener = () => {
     const { usersRef } = this.state;
     const loadedUsers = [];
@@ -47,12 +43,7 @@ export class UserInviteModal extends Component {
     this.state.roomsRef.off();
   };
 
-  /**
-   * 유저를 초대합니다.
-   * room과 user는 many to many 관계이기 때문에
-   * room id 밑에는 유저 정보를
-   * user id 밑에는 방 정보를 저장합니다.
-   */
+  //Invite users to join the chat room
   inviteUser = (user) => {
     const {
       roomsRef, usersRef, currentRoom,
@@ -97,14 +88,12 @@ export class UserInviteModal extends Component {
     closeModal();
   };
 
-  /**
-   * 현재 방에 들어와있는 유저를 제외하고 초대 가능한 유저만 보여줍니다.
-   */
+  //Make only available users to display
   displayUsers = (users) => {
     const currentRoomUserIds = this.props.currentRoomUsers.map(user => user.id);
     return users.length > 0 && users
       .filter(user => !currentRoomUserIds.includes(user.id)).map(user => (
-        <UserInfoItem
+        <UserInfos
           user={user}
           onClick={() => this.inviteUser(user)}
           key={user.id}

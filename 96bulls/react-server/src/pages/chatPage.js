@@ -1,8 +1,10 @@
-import React from 'react';
+/* Page to include chat app on the page */
+
+import React, { Component } from 'react';
 import Chat from './components/chat'
 import { Link } from 'react-router-dom'
 
-class chatPage extends React.Component {
+class chatPage extends Component {
 
     render() {
         return (

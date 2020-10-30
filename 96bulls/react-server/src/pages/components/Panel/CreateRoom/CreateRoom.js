@@ -1,3 +1,5 @@
+/* Create Chat room */
+
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import Input from '../../common/Input';

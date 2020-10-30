@@ -1,3 +1,5 @@
+/* Show the current list of rooms that are created */
+
 import React, { Component } from 'react';
 import styles from './RoomList.module.scss';
 import firebase from '../../../config/firebase';

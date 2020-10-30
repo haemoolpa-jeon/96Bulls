@@ -1,5 +1,7 @@
+/* Chat page that contains Message, Room and Panel */
+
 import React, { Component } from 'react';
-import SidePanel from './SidePanel/SidePanel';
+import Panel from './Panel/Panel';
 import RoomList from './RoomList/RoomList';
 import Messages from './Messages/Messages';
 import styles from './App.module.scss';
@@ -12,7 +14,7 @@ export class Chat extends Component {
     const { currentUser, currentRoom } = this.props;
     return (
       <div className={styles.App}>
-        <SidePanel
+        <Panel
           key={currentUser && currentUser.id}
           currentUser={currentUser}
         />
