@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './SidePanel.module.scss';
-import CreateRoomModal from './CreateRoomModal/CreateRoomModal';
+import CreateRoom from './CreateRoom/CreateRoom';
 import firebase from '../../../config/firebase';
 import PropTypes from 'prop-types';
 import { clearUser, clearRoom } from '../../actions';
@@ -43,7 +43,7 @@ export class SidePanel extends Component {
         <button onClick={this.handleLogout} type="button">
             Logout
         </button>
-        <CreateRoomModal
+        <CreateRoom
           currentUser={currentUser}
           isOpen={CreateRoomModalIsOpen}
           closeModal={this.closeModal}

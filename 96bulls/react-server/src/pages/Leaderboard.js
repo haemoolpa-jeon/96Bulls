@@ -57,8 +57,8 @@ const Leaderboard = () => {
   return(
       <>
         <div className='back-button' onClick={goBack} style={{ display: 'inline-block' }}>⟵   Back</div>
-                <div className='back-button' onClick={goHome} style={{ display: 'inline-block' }}>Home</div>
-                <div className='back-button' style={{ display: 'inline-block' }} onClick={handleLogout}>Logout</div>
+        <div className='back-button' onClick={goHome} style={{ display: 'inline-block' }}>Home</div>
+        <div className='back-button' style={{ display: 'inline-block' }} onClick={handleLogout}>Logout</div>
         <table id='leaderboard'>
           <tr>
             <th>Position</th>

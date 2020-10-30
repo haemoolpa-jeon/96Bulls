@@ -1,15 +1,24 @@
+/* AUTH login */
+
+
+//import necessary library
 import React, { Component } from 'react';
 import md5 from 'md5';
+import { Link } from 'react-router-dom';
+
+//import components from components file
 import Form from '../components/common/Form';
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
 import ErrorMessage from '../components/common/ErrorMessage';
-import firebase from '../../config/firebase';
-import styles from './Register.module.scss';
-import { Link } from 'react-router-dom';
 
+//Import firebase for AUTH
+import firebase from '../../config/firebase';
+//import styles
+import styles from './Register.module.scss';
 
 class Register extends Component {
+  //Set User State
   state = {
     username: '',
     email: '',
@@ -20,6 +29,7 @@ class Register extends Component {
     usersRef: firebase.database().ref('users'),
   };
 
+  //Form validation
   isFormValid = () => {
     const errors = [];
     let error;
@@ -56,6 +66,7 @@ class Register extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  //Action on Submit button firebase AUTH copied and modified from google firebase
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({ errors: [], loading: true }, () => {

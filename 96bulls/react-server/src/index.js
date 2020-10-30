@@ -24,7 +24,6 @@ import Quizzes from './pages/Quizzes.js';
 import ChatPage from './pages/chatPage.js'
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
-import Spinner from './pages/components/common/Spinner';
 import EditProfile from './pages/Canvas.js';
 import Achievements from './pages/Achievements.js';
 
@@ -45,10 +44,7 @@ class Root extends Component {
   }
 
   render() {
-    const { isLoading } = this.props;
-    return isLoading ? (
-      <Spinner />
-    ) : (
+    return (
       <Switch>
         <Route exact path="/" component={App} />
         <Route exact path="/home" render={() => <HomePage />} />

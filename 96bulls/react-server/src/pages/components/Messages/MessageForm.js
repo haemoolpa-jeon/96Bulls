@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import firebase from '../../../config/firebase';
 import { v4 as uuidv4 } from 'uuid'
 import styles from './MessageForm.module.scss';
-import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import FileUploadModal from './FileUploadModal';
 import ProgressBar from './ProgressBar';
-import Tooltip from '@material-ui/core/Tooltip';
 
 class MessageForm extends Component {
   state = {

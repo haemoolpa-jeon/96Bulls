@@ -1,3 +1,6 @@
+//Firebase Configuration file for DB connection and AUTH
+
+//import firebase related
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';

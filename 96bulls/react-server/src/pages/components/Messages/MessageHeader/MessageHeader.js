@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import Paper from '../../common/Paper';
 import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
 import styles from './MessageHeader.module.scss';
 import UserInviteModal from './UserInviteModal';
 import CurrentRoomUsersModal from './CurrentRoomUsersModal';
-import Tooltip from '@material-ui/core/Tooltip';
 import firebase from '../../../../config/firebase';
 
 class MessageHeader extends Component {

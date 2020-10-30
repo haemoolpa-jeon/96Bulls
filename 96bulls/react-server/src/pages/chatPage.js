@@ -7,7 +7,8 @@ class chatPage extends React.Component {
     render() {
         return (
             <div className="current-class-page">
-                <div className='back-button'><Link to='/home'>⟵   Back</Link></div>
+                <div className='back-button' style={{ display: 'inline-block' }}><Link to='/home'>⟵   Back</Link></div>
+                <div className='back-button' style={{ display: 'inline-block' }}><Link to='/home'>Home</Link></div>
                 <Chat></Chat>
                 </div>
         );

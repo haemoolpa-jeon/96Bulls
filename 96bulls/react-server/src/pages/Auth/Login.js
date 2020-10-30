@@ -1,14 +1,23 @@
+/* AUTH login */
+
+
+//import necessary library
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
+//import components from components file
 import Form from '../components/common/Form';
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
 import ErrorMessage from '../components/common/ErrorMessage';
-import firebase from '../../config/firebase';
-import styles from './Login.module.scss';
-import { Link } from 'react-router-dom';
 
+//Import firebase for AUTH
+import firebase from '../../config/firebase';
+//import styles
+import styles from './Login.module.scss';
 
 class Login extends Component {
+  //Set User State
   state = {
     email: '',
     password: '',
@@ -17,6 +26,7 @@ class Login extends Component {
     loading: false,
   };
 
+  //Form validation
   isFormValid = () => {
     const errors = [];
     let error;
@@ -39,6 +49,7 @@ class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  //Action on Submit button firebase AUTH copied and modified from google firebase
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({ errors: [], loading: true }, () => {

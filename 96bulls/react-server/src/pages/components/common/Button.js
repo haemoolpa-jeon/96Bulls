@@ -1,3 +1,5 @@
+/* Frequently used Button Component */
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
@@ -10,14 +12,14 @@ class Button extends Component {
 
   render() {
     const {
-      children, loader, disabled, className,
+      className, disabled, children, loader,  
     } = this.props;
     return (
       <button
         className={`${styles.button} ${className}`}
+        disabled={disabled}
         onClick={this.handleClick}
         type="button"
-        disabled={disabled}
       >
         { loader ? <div className={styles.loader} /> : children }
       </button>
@@ -26,11 +28,11 @@ class Button extends Component {
 }
 
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func,
-  loader: PropTypes.bool,
-  disabled: PropTypes.bool,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  loader: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 Button.default = {

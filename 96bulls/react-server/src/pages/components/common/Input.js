@@ -1,3 +1,5 @@
+/* Inputs that gets in */
+
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Input.module.scss';
@@ -10,7 +12,7 @@ class Input extends Component {
 
   render() {
     const {
-      id, name, value, type, placeholder, className,
+      className, id, name, value, type, placeholder, 
     } = this.props;
     return (
       <Fragment>

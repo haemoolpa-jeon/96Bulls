@@ -6,9 +6,9 @@ import firebase from '../../../../config/firebase';
 import { connect } from 'react-redux';
 import { setCurrentRoom } from '../../../actions';
 import PropTypes from 'prop-types';
-import styles from './CreateRoomModal.module.scss';
+import styles from './CreateRoom.module.scss';
 
-class CreateRoomModal extends Component {
+class CreateRoom extends Component {
   state = {
     roomName: '',
     user: this.props.currentUser,
@@ -125,11 +125,11 @@ class CreateRoomModal extends Component {
   }
 }
 
-CreateRoomModal.propTypes = {
+CreateRoom.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   currentUser: PropTypes.object,
   setCurrentRoom: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setCurrentRoom })(CreateRoomModal);
+export default connect(null, { setCurrentRoom })(CreateRoom);

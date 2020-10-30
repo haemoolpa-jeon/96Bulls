@@ -1,3 +1,5 @@
+//Actions for users and chat room
+
 import * as actionsTypes from './types';
 
 /* User Actions */
