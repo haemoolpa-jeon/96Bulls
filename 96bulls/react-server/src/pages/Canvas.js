@@ -4,6 +4,9 @@ import './style/canvas.css';
 
 const shapeCosts = {'circle': 20, 'square': 20, 'triangle': 20, 'rectangle': 20};
 
+//Component to handle editing the user's avatar
+//Each shape has a cost, and the user only has a certain amount of points to buy shapes
+//The users points is dependent on their level
 const EditProfile = () => {
     
   const history = useHistory();
@@ -19,7 +22,7 @@ const EditProfile = () => {
   const goBack = () => {history.push('/profile');}
 
   //When the page first loads, get the user's level
-  //So taht we can scale the points
+  //So that we can scale the points
   useEffect(() => {
     fetch('/profile/Jesse Klein')
       .then(response => response.json())
@@ -30,7 +33,7 @@ const EditProfile = () => {
   
   }, []);
 
-
+  //Checks if the user has pressed a key to rotate or change the size of the shape
   useEffect(() => {
     window.addEventListener('keydown', (event) => {
       const keyPressed = event.key;
@@ -42,6 +45,7 @@ const EditProfile = () => {
     });
   }, []);
 
+  //Changes the size of the shape on keydown
   const handleResize = (key) => {
     if (key === 'w') {
       setSize((prevSize) => (prevSize + 10) > 100 ? 100 : (prevSize + 5));
@@ -50,6 +54,7 @@ const EditProfile = () => {
     }
   }
 
+  //Changes the rotation of the shape on keydown
   const handleRotate = (key) => {
     if (key === 'a') {
       setRotation((prevRotation) => ((prevRotation - 90) < 0 ? 270 : (prevRotation - 90)));
@@ -58,7 +63,7 @@ const EditProfile = () => {
     }
   }
 
-
+  //Handles the user selecting a shape to add to the avatar
   const selectShape = (shapeName) => {
     console.log('selecting:', shapeName)
 
@@ -83,6 +88,7 @@ const EditProfile = () => {
     renderCanvas(evt.clientX - rect.left, evt.clientY - rect.top);
   }
 
+  //Draws a rectangle at the given point with the given size and rotation
   const drawRectangle = (x, y, size, rotation) => {
     var ctx = canvas.current.getContext("2d");
     ctx.beginPath();
@@ -98,6 +104,7 @@ const EditProfile = () => {
     ctx.stroke();
   }
 
+  //Draws a circle at the given point with the given size and rotation
   const drawCircle = (x, y, size) => {
     var ctx = canvas.current.getContext("2d");
     ctx.beginPath();
@@ -105,6 +112,7 @@ const EditProfile = () => {
     ctx.stroke();
   }
 
+  //Draws a triangle at the given point with the given size and rotation
   const drawTriangle = (x, y, size, rotation) => {
     var ctx = canvas.current.getContext("2d");
     ctx.beginPath();
@@ -126,6 +134,7 @@ const EditProfile = () => {
     ctx.stroke();
   }
 
+  //Draws a square at the given point with the given size and rotation
   const drawSquare = (x, y, size) => {
     var ctx = canvas.current.getContext("2d");
     ctx.beginPath();
@@ -133,6 +142,7 @@ const EditProfile = () => {
     ctx.stroke();
   }
 
+  //Removes all shapes from the canvas
   const resetShapes = () => {
     if (shapes.length === 0) {
       setErrorMessage("Nothing to clear!");
@@ -146,6 +156,7 @@ const EditProfile = () => {
     ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
   }
 
+  //Renders the shapes that have been saved to state
   const renderSavedShapes = (x, y) => {
     
     const ctx = canvas.current.getContext('2d');
@@ -164,6 +175,7 @@ const EditProfile = () => {
     }
   }
 
+  //Renders all shapes in state, and the shape on screen that hasn't been set yet
   const renderCanvas = (x, y) => {
 
     renderSavedShapes(x, y);
@@ -182,6 +194,7 @@ const EditProfile = () => {
 
   }
 
+  //Handles adding a shape to the canvas when the user clicks on it
   const handleCanvasClick = (evt) => {
     if (selected === false) return;
 
@@ -198,11 +211,13 @@ const EditProfile = () => {
     setErrorMessage("");
   }
 
+  //Stop rendering the selected shape when the mouse leaves
   const handleCanvasLeave = (evt) => {
     var rect = canvas.current.getBoundingClientRect();
     renderSavedShapes(evt.clientX - rect.left, evt.clientY - rect.top);
   }
 
+  //Saves the avatar to the users profile picture
   const saveAvatar = () => {
 
     if (shapes.length === 0) {
@@ -223,6 +238,7 @@ const EditProfile = () => {
 
   }
 
+  //Removes the last shape that the user put down
   const clearLastShape = () => {
     if (shapes.length === 0) {
       setErrorMessage("No shapes to clear!");
@@ -234,12 +250,14 @@ const EditProfile = () => {
     setRerender(true);
   }
 
+  //Forces the canvas to rerender when needed
   const handleRerender = () => {
     if (needRerender) {
       renderCanvas();
     }
   }
 
+  //Sets the error that has occurred due to user action
   const setErrorMessage = (message) => {
     const error = document.getElementById("error-message");
     error.innerText = message;

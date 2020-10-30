@@ -60,6 +60,9 @@ router.get('/:name', async (req, res) => {
 
 })
 
+/**
+ * Updates the img of the user with HTML canvas
+ */
 router.post('/updateimg', async (req, res) => {
 
   const { imgURL } = req.body;
@@ -71,6 +74,9 @@ router.post('/updateimg', async (req, res) => {
 
 })
 
+/**
+ * Gets the achievements that the user has earnt
+ */
 router.post('/get-achievements', async (req, res) => {
   const {levelUp, newLevel, oldQuestions, newQuestions} = req.body;
   console.log(levelUp, newLevel, oldQuestions, newQuestions);
@@ -98,7 +104,7 @@ router.post('/xp', async (req, res) => {
   //Add the xp and check for level up
   let newXP = userProfile.xp + xpGained;
 
-  if (newXP > 1000) {
+  if (newXP >= 1000) {
     newXP -= 1000;
     const newProfile = await Profile.updateOne( {name: username}, {
       xp: newXP,

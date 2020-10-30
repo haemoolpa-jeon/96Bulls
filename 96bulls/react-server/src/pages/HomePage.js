@@ -3,6 +3,10 @@ import { useHistory } from 'react-router-dom';
 
 import userTypeStore from '../userTypeStore.js';
 
+/**
+ * The homepage for the user
+ * Renders different options depending on whether the user is a student or an instructor
+ */
 const HomePage = (props) => {
 
   const history = useHistory();

@@ -4,7 +4,8 @@ import '../App.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import firebase from '../config/firebase';
 
-
+//Front page for a student user
+//User can enter class, choose a quiz or view the class leaderboard
 const FrontPage = (props) => {
 
     const history = useHistory();

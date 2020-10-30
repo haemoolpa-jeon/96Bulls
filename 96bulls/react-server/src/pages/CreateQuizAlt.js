@@ -4,6 +4,8 @@ import '../App.css';
 import './style/create-quiz.css';
 import firebase from '../config/firebase';
 
+
+//Components to handle instructors creating quizzes
 const CreateQuiz = () => {
 
   const [titleDone, setTitleDone] = useState(false);
@@ -35,11 +37,10 @@ const CreateQuiz = () => {
       .then(() => console.log('Logout'));
   };
 
+  //Add the quiz to the database
   const submitQuiz = () => {
 
     addQuestion();
-
-    console.log("Submitting quiz");
 
     const requestOptions = {
       method: 'POST',
@@ -52,6 +53,7 @@ const CreateQuiz = () => {
 
   }
 
+  //Reset the inputs after submitting a questions
   const resetInputs = () => {
     question.current.value = "";
     answer.current.value = "";
@@ -60,6 +62,7 @@ const CreateQuiz = () => {
     incorrect3.current.value = "";
   }
 
+  //Add a question to state
   const addQuestion = () => {
 
     const questionInfo = question.current.value;
@@ -75,6 +78,7 @@ const CreateQuiz = () => {
 
   }
 
+  //After name and course of quiz has been set, allow them to start creating questions
   const advanceToQuestions = () => {
     setQuizData({title: title.current.value, course: course.current.value});
     setTitleDone(true);

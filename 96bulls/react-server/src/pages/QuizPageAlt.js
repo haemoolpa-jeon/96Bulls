@@ -3,6 +3,11 @@ import { useHistory, NavLink } from "react-router-dom"
 import './style/quizquestion.css';
 import Trophy from './Trophy';
 
+/**
+ * Component that represents a quiz
+ * Users can answer the questions then at the end their xp is updated
+ * Users can see if they leveled up or earnt any new achievements
+ */
 const QuizPage = ({match}) => {
 
   const [quiz, setQuiz] = useState();
@@ -15,15 +20,11 @@ const QuizPage = ({match}) => {
   const [achievements, setAchievements] = useState([]);
   const history = useHistory();
 
+  //Gets the quiz and questions from the database for the specified quiz
   useEffect(() => {
-
-    //Here we need to get the quiz info
-
-    console.log("fetching data")
     fetch(`/quiz/get-quiz/${match.params.id}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setQuiz(data.quiz);
         setQuestions(data.questions);
         setLoaded(true);
@@ -35,7 +36,6 @@ const QuizPage = ({match}) => {
       setUserInfo(data);
     });
 
-
   });
 
 
@@ -45,6 +45,7 @@ const QuizPage = ({match}) => {
   const answer3 = useRef();
   const answer4 = useRef();
 
+  //After user answers a question, unset the radio buttons
   const resetRadioButtons = () => {
     answer1.current.checked = false;
     answer2.current.checked = false;
@@ -52,6 +53,7 @@ const QuizPage = ({match}) => {
     answer4.current.checked = false;
   }
 
+  //Handles the xp increase animation and levelups
   const runCSSAnimation = () => {
     const progress = document.getElementById('progress');
     const remaining = document.getElementById('remaining');
@@ -93,12 +95,16 @@ const QuizPage = ({match}) => {
       }, 700);
       return;
     } 
-    progress.style.width = progressPercent + '%';
-    remaining.style.width = (100 - progressPercent) + '%';
-    const xpRemaining = document.getElementById('xpRemaining');
-    xpRemaining.innerText = `${(100 - progressPercent) * 10}xp Remaining`;
+    setTimeout(() => {
+      progress.style.width = progressPercent + '%';
+      remaining.style.width = (100 - progressPercent) + '%';
+      const xpRemaining = document.getElementById('xpRemaining');
+      xpRemaining.innerText = `${(100 - progressPercent) * 10}xp Remaining`;
+    }, 1000)
+
   }
 
+  //After the quiz, checks if the user has been awards a new achievement
   const getAchievements = (levelUp, newLevel, oldQuestions, newQuestions) => {
     const requestOptions = {
       method: 'POST',
@@ -120,6 +126,7 @@ const QuizPage = ({match}) => {
     .catch(err => console.log(err))
   }
 
+  //Updates the xp of the user after they have completed the quiz
   const updateXP = (numCorrect) => {
     const requestOptions = {
       method: 'POST',
@@ -135,6 +142,7 @@ const QuizPage = ({match}) => {
     .catch(err => console.log(err))
   }
 
+  //After a user answers a question, move to the next question
   const nextQuestion = (e) => {
     const answer = e.target.nextSibling.innerText;
     if (answer === questions[questionNumber].correct) {
@@ -150,6 +158,7 @@ const QuizPage = ({match}) => {
     resetRadioButtons();
   }
 
+  //Redirect back to the previous page
   const goBack = () => {
     history.goBack();
   }
@@ -181,14 +190,14 @@ const QuizPage = ({match}) => {
                         (achievements.length === 0)
                         ? <></>
                         :  
-                          <>
-                          <h1>You earnt an achievement!</h1>
+                          <div className='trophyCon'>
+                          <h1 id='achEarnt'>You earnt an achievement!</h1>
                           {
                           achievements.map((trophy, index) => (
                             <Trophy key={index} title={trophy.name} description={trophy.description} imageURL={trophy.imageURL} />
                           ))
                           }
-                          </>
+                          </div>
                       }
                     </div>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 
+//Simple component representing a position on the leaderboard
 const BoardEntry = ({position, avatarURL, name, degree, level, trophyList, xp}) => {
 
   const mapTrophys = () => {

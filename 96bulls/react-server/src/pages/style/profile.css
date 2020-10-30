@@ -6,6 +6,11 @@
   background: none;
   border: none;
   font-size: 25px;
+  color: white;
+}
+
+.navButton {
+  color: white !important;
 }
 
 #profile-main {
@@ -18,7 +23,6 @@
   background-color: white;
   border: 2px solid black;
   border-radius: 20px;
-  padding-bottom: 15px;
 }
 
 #profile-main img {
@@ -39,7 +43,7 @@
 
 #levelBar {
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   width: 70vw;
@@ -63,14 +67,20 @@
 
 
 #progress {
-  width: 40%;
+  width: 0%;
   background-color: green;
+  transition-property: width;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
   height: 25px;
 }
 
 #remaining {
-  width: 60%;
+  width: 100%;
   background-color: grey;
+  transition-property: width;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
   height: 25px;
 }
 
@@ -78,4 +88,25 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+#achEarnt {
+  margin-top: 20px;
+  color: black !important;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#levelUp {
+  font-size: 20px;
+}
+
+.trophyCon {
+  margin-top: 60px !important;
+  width: 700px;
+  margin: auto;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
 }

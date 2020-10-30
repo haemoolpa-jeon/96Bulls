@@ -3,17 +3,18 @@ import { NavLink, useHistory } from "react-router-dom"
 import './style/quizzes.css'
 import firebase from '../config/firebase';
 
+//A component to hold the quizzes store in the database
+//Users can select a pre class quiz to complete before their class
 const Quizzes = () => {
 
   const [loaded, setLoaded] = useState(false);
   const [quizzes, setQuizzes] = useState();
 
+  //Gets all quizzes from the database and presents them to the user
   useEffect(() => {
-    console.log("fetching data")
     fetch('/quiz/all')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setQuizzes(data);
         setLoaded(true);
       });
@@ -21,14 +22,17 @@ const Quizzes = () => {
 
   const history = useHistory();
 
+  //Redirect to home page
   const goHome = () => {
     history.push('/home');
   }
   
+  //Redirect to class page
   const goBack = () => {
     history.push('/class');
   }
   
+  //Logout user
   const handleLogout = () => {
     firebase
       .auth()

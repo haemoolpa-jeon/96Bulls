@@ -1,9 +1,7 @@
 import React from 'react';
 
-
+//Comonent to represent an achievement a player has earnt
 const Trophy = ({title, description, imageURL}) => {
-
-  console.log("imageurl", imageURL);
 
   return(
     <div className="trophy">

@@ -3,7 +3,8 @@ import { NavLink, useHistory } from "react-router-dom";
 import '../pages/style/profile.css';
 import firebase from '../config/firebase';
 
-
+//Component representing a user's profile
+//Users can edit their avatar and view achievements they've earnt
 const Profile = () => {
 
     const history = useHistory();

@@ -4,6 +4,10 @@ import { useHistory } from "react-router-dom"
 import './style/leaderboard.css';
 import firebase from '../config/firebase';
 
+/**
+ * Get all of the user information from the database and presents it
+ * as a leaderboard. Higher levels and xp are higher on the leaderboard
+ */
 const Leaderboard = () => {
 
   const history = useHistory();
@@ -24,6 +28,7 @@ const Leaderboard = () => {
       .then(() => console.log('Logout'));
   };
 
+  //Loops through user profiles and renders them
   const renderProfiles = () => {
     return (
       profiles.map((profile, index) => (
@@ -43,9 +48,8 @@ const Leaderboard = () => {
     )
   }
 
+  //Gets all the user information from the database
   useEffect(() => {
-
-    console.log("fetching data")
     fetch('/profile/all')
       .then(response => response.json())
       .then(data => {
