@@ -51,6 +51,8 @@ const CreateQuiz = () => {
     fetch('/quiz/create-quiz', requestOptions)
       .catch(err => console.log(err))
 
+    history.push('/class');
+
   }
 
   //Reset the inputs after submitting a questions
@@ -96,7 +98,7 @@ const CreateQuiz = () => {
       ?
       <>
         <div id='form-part-1'>
-          <label className='field-label'>Question 1:</label><br />
+          <label className='field-label'>{`Question ${questionData.length + 1}:`}</label><br />
           <input ref={question} type="text" id="q1_name" name="q1_name" /><br />
           <label className='field-label'>Correct answer:</label><br />
           <input ref={answer} type="text" id="q1_correct" name="q1_correct" /><br /><br />
