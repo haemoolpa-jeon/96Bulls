@@ -35,7 +35,7 @@ class CurrentClass extends React.Component {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                username: 'User1',
+                username: 'Jesse Klein',
                 xpGained: 50,
                 questionsAnswered: 0,
             })
